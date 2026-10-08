@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+*.pre_patch_backup
+
+# Datasets and trained models (too large for Git; see README)
+src/backend/prog_analizador/data/*.csv
+!src/backend/prog_analizador/data/healthyIMS1.csv
+src/backend/prog_analizador/models/*
+!src/backend/prog_analizador/models/.test
+src/backend/prog_analizador/saved_models/
+*.keras
+*.h5
+
+# Runtime outputs written by the backend
+src/backend/img/*
+!src/backend/img/faultless/
+src/backend/prog_analizador/saved/*
+!src/backend/prog_analizador/saved/.test
+src/backend/prog_analizador/saved_data/*
+!src/backend/prog_analizador/saved_data/.test
+
+# Java / Maven
+src/frontend/target/
+*.mv.db
+*.trace.db
+
+# OS / editor / misc
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+~$*
+*.zip
+cookies.txt
+
+# Streamlit dashboard output
+src/backend/test_results_verification/
