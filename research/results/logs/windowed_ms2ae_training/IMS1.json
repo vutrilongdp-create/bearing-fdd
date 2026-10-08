@@ -1,0 +1,17 @@
+{
+  "dataset": "IMS1",
+  "status": "OK",
+  "model": "Windowed_MS2AE_Table1",
+  "structure": "IS(2048)-3500-700-200-1-200-700-3500-IS(2048)",
+  "healthy_samples": 300,
+  "raw_input_dim": 20480,
+  "usable_input_dim": 20480,
+  "window_size": 2048,
+  "windows_per_sample": 10,
+  "epochs": 5,
+  "batch_size": 64,
+  "final_loss": 0.010645733214914799,
+  "encoder_path": "prog_analizador\\models\\IMS1.windowed_ms2ae_encoder.keras",
+  "autoencoder_path": "prog_analizador\\models\\IMS1.windowed_ms2ae_autoencoder.keras",
+  "elapsed_seconds": 90.83
+}

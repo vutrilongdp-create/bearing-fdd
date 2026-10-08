@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+<marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="strokeWidth">
+<path d="M0,0 L14,7 L0,14 z" fill="#222222"/>
+</marker>
+<filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+<feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.12"/>
+</filter>
+</defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="960.0" y="70" font-family="Times New Roman" font-size="46" fill="#111111" font-weight="bold" text-anchor="middle">
+<tspan x="960.0" dy="0">Minh họa các module trong pipeline chẩn đoán lỗi vòng bi</tspan>
+</text>
+<text x="960.0" y="120" font-family="Times New Roman" font-size="28" fill="#4B5563" font-weight="normal" text-anchor="middle">
+<tspan x="960.0" dy="0">MS2AE · Health Index · FFP · Kurtogram · Envelope FFT · XAI</tspan>
+</text>
+<g filter="url(#softShadow)"><rect x="80" y="180" width="330" height="230" rx="28" ry="28" fill="#F0F7E8" stroke="#4C7C2D" stroke-width="3"/>
+<circle cx="126" cy="226" r="30" fill="#4C7C2D"/>
+<text x="126" y="238" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="126" dy="0">1</tspan>
+</text>
+<text x="245.0" y="232" font-family="Times New Roman" font-size="30" fill="#4C7C2D" font-weight="bold" text-anchor="middle">
+<tspan x="245.0" dy="0">Dữ liệu rung</tspan>
+</text>
+<text x="245.0" y="292" font-family="Times New Roman" font-size="58" fill="#1E4C9A" font-weight="bold" text-anchor="middle">
+<tspan x="245.0" dy="0">∿</tspan>
+</text>
+<text x="245.0" y="358" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="245.0" dy="0">Nghe dao động</tspan>
+<tspan x="245.0" dy="29.28">của vòng bi</tspan>
+</text></g>
+<g filter="url(#softShadow)"><rect x="455" y="180" width="330" height="230" rx="28" ry="28" fill="#EEF6FF" stroke="#1D5DB8" stroke-width="3"/>
+<circle cx="501" cy="226" r="30" fill="#1D5DB8"/>
+<text x="501" y="238" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="501" dy="0">2</tspan>
+</text>
+<text x="620.0" y="232" font-family="Times New Roman" font-size="30" fill="#1D5DB8" font-weight="bold" text-anchor="middle">
+<tspan x="620.0" dy="0">MS2AE → HI</tspan>
+</text>
+<text x="620.0" y="292" font-family="Times New Roman" font-size="58" fill="#0B3A7A" font-weight="bold" text-anchor="middle">
+<tspan x="620.0" dy="0">HI</tspan>
+</text>
+<text x="620.0" y="358" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="620.0" dy="0">Tín hiệu dài</tspan>
+<tspan x="620.0" dy="29.28">→ điểm sức khỏe</tspan>
+</text></g>
+<g filter="url(#softShadow)"><rect x="830" y="180" width="330" height="230" rx="28" ry="28" fill="#FFF3E6" stroke="#C85A00" stroke-width="3"/>
+<circle cx="876" cy="226" r="30" fill="#C85A00"/>
+<text x="876" y="238" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="876" dy="0">3</tspan>
+</text>
+<text x="995.0" y="232" font-family="Times New Roman" font-size="30" fill="#C85A00" font-weight="bold" text-anchor="middle">
+<tspan x="995.0" dy="0">Ngưỡng P95</tspan>
+</text>
+<text x="995.0" y="292" font-family="Times New Roman" font-size="58" fill="#C85A00" font-weight="bold" text-anchor="middle">
+<tspan x="995.0" dy="0">P95</tspan>
+</text>
+<text x="995.0" y="358" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="995.0" dy="0">Vạch an toàn</tspan>
+<tspan x="995.0" dy="29.28">từ mẫu khỏe</tspan>
+</text></g>
+<g filter="url(#softShadow)"><rect x="1205" y="180" width="330" height="230" rx="28" ry="28" fill="#FFF7E8" stroke="#A86A00" stroke-width="3"/>
+<circle cx="1251" cy="226" r="30" fill="#A86A00"/>
+<text x="1251" y="238" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="1251" dy="0">4</tspan>
+</text>
+<text x="1370.0" y="232" font-family="Times New Roman" font-size="30" fill="#A86A00" font-weight="bold" text-anchor="middle">
+<tspan x="1370.0" dy="0">FFP</tspan>
+</text>
+<text x="1370.0" y="292" font-family="Times New Roman" font-size="58" fill="#1D5DB8" font-weight="bold" text-anchor="middle">
+<tspan x="1370.0" dy="0">✓</tspan>
+</text>
+<text x="1370.0" y="358" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="1370.0" dy="0">5 điểm liên tiếp</tspan>
+<tspan x="1370.0" dy="29.28">vượt ngưỡng</tspan>
+</text></g>
+<g filter="url(#softShadow)"><rect x="80" y="545" width="330" height="230" rx="28" ry="28" fill="#FFF1F0" stroke="#B01818" stroke-width="3"/>
+<circle cx="126" cy="591" r="30" fill="#B01818"/>
+<text x="126" y="603" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="126" dy="0">5</tspan>
+</text>
+<text x="245.0" y="597" font-family="Times New Roman" font-size="30" fill="#B01818" font-weight="bold" text-anchor="middle">
+<tspan x="245.0" dy="0">DTW / Sai khác</tspan>
+</text>
+<text x="245.0" y="657" font-family="Times New Roman" font-size="58" fill="#A00000" font-weight="bold" text-anchor="middle">
+<tspan x="245.0" dy="0">Δx</tspan>
+</text>
+<text x="245.0" y="723" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="245.0" dy="0">Bỏ phần bình thường</tspan>
+<tspan x="245.0" dy="29.28">giữ phần bất thường</tspan>
+</text></g>
+<g filter="url(#softShadow)"><rect x="455" y="545" width="330" height="230" rx="28" ry="28" fill="#F7F1FF" stroke="#6B3FA0" stroke-width="3"/>
+<circle cx="501" cy="591" r="30" fill="#6B3FA0"/>
+<text x="501" y="603" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="501" dy="0">6</tspan>
+</text>
+<text x="620.0" y="597" font-family="Times New Roman" font-size="30" fill="#6B3FA0" font-weight="bold" text-anchor="middle">
+<tspan x="620.0" dy="0">Kurtogram</tspan>
+</text>
+<text x="620.0" y="657" font-family="Times New Roman" font-size="58" fill="#673AB7" font-weight="bold" text-anchor="middle">
+<tspan x="620.0" dy="0">▦</tspan>
+</text>
+<text x="620.0" y="723" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="620.0" dy="0">Tìm dải tần</tspan>
+<tspan x="620.0" dy="29.28">có va đập mạnh</tspan>
+</text></g>
+<g filter="url(#softShadow)"><rect x="830" y="545" width="330" height="230" rx="28" ry="28" fill="#EEF4F4" stroke="#287070" stroke-width="3"/>
+<circle cx="876" cy="591" r="30" fill="#287070"/>
+<text x="876" y="603" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="876" dy="0">7</tspan>
+</text>
+<text x="995.0" y="597" font-family="Times New Roman" font-size="30" fill="#287070" font-weight="bold" text-anchor="middle">
+<tspan x="995.0" dy="0">Envelope FFT</tspan>
+</text>
+<text x="995.0" y="657" font-family="Times New Roman" font-size="58" fill="#0B3A7A" font-weight="bold" text-anchor="middle">
+<tspan x="995.0" dy="0">FFT</tspan>
+</text>
+<text x="995.0" y="723" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="995.0" dy="0">Làm rõ</tspan>
+<tspan x="995.0" dy="29.28">nhịp va đập</tspan>
+</text></g>
+<g filter="url(#softShadow)"><rect x="1205" y="545" width="330" height="230" rx="28" ry="28" fill="#F8F1FF" stroke="#6B3FA0" stroke-width="3"/>
+<circle cx="1251" cy="591" r="30" fill="#6B3FA0"/>
+<text x="1251" y="603" font-family="Times New Roman" font-size="30" fill="#FFFFFF" font-weight="bold" text-anchor="middle">
+<tspan x="1251" dy="0">8</tspan>
+</text>
+<text x="1370.0" y="597" font-family="Times New Roman" font-size="30" fill="#6B3FA0" font-weight="bold" text-anchor="middle">
+<tspan x="1370.0" dy="0">Chẩn đoán + XAI</tspan>
+</text>
+<text x="1370.0" y="657" font-family="Times New Roman" font-size="58" fill="#6B3FA0" font-weight="bold" text-anchor="middle">
+<tspan x="1370.0" dy="0">◎</tspan>
+</text>
+<text x="1370.0" y="723" font-family="Times New Roman" font-size="24" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="1370.0" dy="0">Hỏng ở đâu</tspan>
+<tspan x="1370.0" dy="29.28">và vì sao</tspan>
+</text></g>
+<line x1="410" y1="295" x2="455" y2="295" stroke="#222222" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="785" y1="295" x2="830" y2="295" stroke="#222222" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1160" y1="295" x2="1205" y2="295" stroke="#222222" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1370" y1="410" x2="245" y2="545" stroke="#222222" stroke-width="3" marker-end="url(#arrow)" stroke-dasharray="10 8"/>
+<line x1="410" y1="660" x2="455" y2="660" stroke="#222222" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="785" y1="660" x2="830" y2="660" stroke="#222222" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1160" y1="660" x2="1205" y2="660" stroke="#222222" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="175" y="850" width="1390" height="125" rx="20" ry="20" fill="#F7F7F7" stroke="#9CA3AF" stroke-width="2"/>
+<text x="870" y="895" font-family="Times New Roman" font-size="30" fill="#111111" font-weight="bold" text-anchor="middle">
+<tspan x="870" dy="0">Ý tưởng dễ hiểu</tspan>
+</text>
+<text x="870" y="935" font-family="Times New Roman" font-size="25" fill="#111111" font-weight="normal" text-anchor="middle">
+<tspan x="870" dy="0">Nghe tiếng rung → chấm điểm sức khỏe → xác nhận lỗi → tách phần bất thường → tìm nhịp va đập → xác định vị trí hỏng → giải thích bằng đặc trưng vật lý</tspan>
+</text>
+<text x="1620" y="255" font-family="Times New Roman" font-size="26" fill="#4C7C2D" font-weight="bold" text-anchor="start">
+<tspan x="1620" dy="0">Đầu vào</tspan>
+</text>
+<text x="1620" y="300" font-family="Times New Roman" font-size="26" fill="#C85A00" font-weight="bold" text-anchor="start">
+<tspan x="1620" dy="0">Phát hiện lỗi</tspan>
+</text>
+<text x="1620" y="345" font-family="Times New Roman" font-size="26" fill="#B01818" font-weight="bold" text-anchor="start">
+<tspan x="1620" dy="0">Chẩn đoán</tspan>
+</text>
+<text x="1620" y="390" font-family="Times New Roman" font-size="26" fill="#6B3FA0" font-weight="bold" text-anchor="start">
+<tspan x="1620" dy="0">Diễn giải XAI</tspan>
+</text>
+</svg>
