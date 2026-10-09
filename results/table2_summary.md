@@ -1,6 +1,6 @@
 # Table 2 - Project Results Summary
 
-Source: range, stage, band-pass range, diagnosis and status come from [`../logs/ims_range_voting_comparison.json`](../logs/ims_range_voting_comparison.json) and [`../logs/xjtu_range_voting_comparison.json`](../logs/xjtu_range_voting_comparison.json); FFP, threshold and top-3 features for IMS-1, IMS-3 and XJTU-SY come from [`ffp_xai_all.json`](ffp_xai_all.json). See the provenance notes below for IMS-2.
+Source: range, stage, band-pass range, diagnosis and status come from [`03_fault_diagnosis/range_voting_ims.json`](03_fault_diagnosis/range_voting_ims.json) and [`03_fault_diagnosis/range_voting_xjtu.json`](03_fault_diagnosis/range_voting_xjtu.json); FFP, threshold and top-3 features for IMS-1, IMS-3 and XJTU-SY come from [`02_ffp_xai/ffp_xai_summary.json`](02_ffp_xai/ffp_xai_summary.json). See the provenance notes below for IMS-2.
 
 | Dataset | Top 3 correlated features | Project FFP | Threshold | Sample/range | Stage | Bandpass filter range | Project diagnosis | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -28,8 +28,8 @@ Source: range, stage, band-pass range, diagnosis and status come from [`../logs/
 
 ## Provenance notes
 
-- **IMS-2 is not part of `ffp_xai_all.json`.** Its FFP (`532`, paper `536`) is recorded in
-  [`../logs/ims2_case_study_summary.json`](../logs/ims2_case_study_summary.json), together with
+- **IMS-2 is not part of `ffp_xai_summary.json`.** Its FFP (`532`, paper `536`) is recorded in
+  [`02_ffp_xai/ims2_case_study.json`](02_ffp_xai/ims2_case_study.json), together with
   the window size (2,048), the representative samples and the selected band-pass ranges.
 - **The IMS-2 threshold `0.498045` and the IMS-2 top-3 features have no machine-readable source
   record in this repository.** The script that built this table entered them by hand. The IMS-2

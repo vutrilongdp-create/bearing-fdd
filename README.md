@@ -38,14 +38,14 @@ raw vibration (IMS: 20,480 pts @ 20.48 kHz · XJTU-SY: 32,768 pts @ 25.6 kHz)
 | XJTU-SY 3-1 | 1268 | 2347 |
 | XJTU-SY 3-4 | 468 | 1416 |
 
-Diagnosis per degradation stage is in [Table 2](research/results/tables/table2_results_summary.md).
+Diagnosis per degradation stage is in [Table 2](results/table2_summary.md).
 On IMS-2, the outer-race fault (BPFO harmonics) is recovered at all three stages. Two IMS-2 values
 (the threshold and the top-3 features) are unverified; see the
-[provenance notes](research/results/tables/table2_results_summary.md#provenance-notes).
+[provenance notes](results/table2_summary.md#provenance-notes).
 
 <p align="center">
-  <img src="research/results/figures/fig08_hi_ffp.png" width="38%" alt="Health index of the IMS-2 dataset">
-  <img src="research/results/figures/fig13_envelope_fft.png" width="60%" alt="Envelope spectra of isolated faulty IMS-2 samples showing BPFO harmonics">
+  <img src="results/04_figures_ims2/fig08_health_index.png" width="38%" alt="Health index of the IMS-2 dataset">
+  <img src="results/04_figures_ims2/fig13_envelope_spectra.png" width="60%" alt="Envelope spectra of isolated faulty IMS-2 samples showing BPFO harmonics">
 </p>
 
 The differences between the paper, the original code and the rerun are discussed in
@@ -57,8 +57,13 @@ results, not a claim of exact reproduction or industrial validation.
 ```text
 .
 ├── src/                 # original BEARING-FDD code (unchanged)
-├── research/results/    # tables/, figures/ (IMS-2, Fig. 8–15), logs/ (JSON records)
-├── docs/                # critical analysis and pipeline diagrams
+├── results/
+│   ├── 01_hi_training/       # windowed MS2AE training logs per dataset
+│   ├── 02_ffp_xai/           # FFP, threshold and XAI correlations; IMS-2 case study
+│   ├── 03_fault_diagnosis/   # range-voting diagnosis for IMS and XJTU-SY
+│   ├── 04_figures_ims2/      # IMS-2 case study, Fig. 8–15 (PNG + SVG)
+│   └── table2_summary.md     # Table 2: FFP, stage, band and diagnosis per dataset
+├── docs/                # critical_analysis_vi.md, diagrams/
 └── images/              # original architecture figure
 ```
 
