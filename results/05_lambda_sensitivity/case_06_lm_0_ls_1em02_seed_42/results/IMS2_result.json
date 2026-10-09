@@ -1,0 +1,61 @@
+{
+  "dataset": "IMS2",
+  "model_variant": "regularized_full_sample",
+  "data_validation": {
+    "path": "/kaggle/input/datasets/longvu274/datasettrain/IMS2.csv",
+    "rows": 984,
+    "dimension": 20480,
+    "fs": 20480.0,
+    "duration_seconds": 1.0
+  },
+  "hi_definition": "scalar sigmoid bottleneck with sequence regularization",
+  "healthy_samples": 300,
+  "window_size": null,
+  "windows_per_sample": 1,
+  "usable_dimension": 20480,
+  "threshold_p95": 0.49579526484012604,
+  "ffp": null,
+  "ffp_zero_based": null,
+  "ffp_one_based": null,
+  "ffp_rule": "first of 5 consecutive HI values above P95",
+  "indexing_note": "Project ffp/ffp_zero_based uses CSV row indices; ffp_one_based is the comparable sample label used by the paper.",
+  "paper_ffp": 536,
+  "paper_ffp_one_based": 536,
+  "difference_from_paper": null,
+  "difference_from_paper_one_based": null,
+  "paper_stage_thresholds_as_printed": {
+    "P95": 0.49579526484012604,
+    "MD": 0.07310733199119568,
+    "LD": 0.14621466398239136
+  },
+  "hi_statistics": {
+    "all": {
+      "minimum": 0.4751157760620117,
+      "maximum": 0.4975683391094208,
+      "mean": 0.4944542139102288,
+      "standard_deviation": 0.00161660059094977
+    },
+    "healthy": {
+      "minimum": 0.49084341526031494,
+      "maximum": 0.49725741147994995,
+      "mean": 0.4949615858991941,
+      "standard_deviation": 0.0007491913953139876,
+      "p95": 0.49579526484012604
+    },
+    "unlabeled": {
+      "minimum": 0.4751157760620117,
+      "maximum": 0.4975683391094208,
+      "mean": 0.49423168233612125,
+      "standard_deviation": 0.0018305788719189264
+    }
+  },
+  "monotonicity_audit": {
+    "decreasing_steps": 495,
+    "decreasing_step_ratio": 0.503560528992879,
+    "mean_decrease_magnitude": 0.00040875291897103357,
+    "second_difference_rmse": 0.0020092889724643084,
+    "note": "Soft regularization reduces violations but does not mathematically guarantee zero violations on unseen samples."
+  },
+  "xai": {},
+  "diagnoses": []
+}

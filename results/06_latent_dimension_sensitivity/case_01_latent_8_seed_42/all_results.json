@@ -1,0 +1,64 @@
+[
+  {
+    "dataset": "IMS2",
+    "model_variant": "multilatent_full_sample",
+    "data_validation": {
+      "path": "/kaggle/input/datasets/longvu274/datasettrain/IMS2.csv",
+      "rows": 984,
+      "dimension": 20480,
+      "fs": 20480.0,
+      "duration_seconds": 1.0
+    },
+    "hi_definition": "full-sample reconstruction MSE from 8-dimensional bottleneck",
+    "healthy_samples": 300,
+    "window_size": null,
+    "latent_dim": 8,
+    "windows_per_sample": 1,
+    "usable_dimension": 20480,
+    "threshold_p95": 0.006229124963283539,
+    "ffp": 532,
+    "ffp_zero_based": 532,
+    "ffp_one_based": 533,
+    "ffp_rule": "first of 5 consecutive HI values above P95",
+    "indexing_note": "Project ffp/ffp_zero_based uses CSV row indices; ffp_one_based is the comparable sample label used by the paper.",
+    "paper_ffp": 536,
+    "paper_ffp_one_based": 536,
+    "difference_from_paper": -3,
+    "difference_from_paper_one_based": -3,
+    "paper_stage_thresholds_as_printed": {
+      "P95": 0.006229124963283539,
+      "MD": 0.006020371802151203,
+      "LD": 0.012040743604302406
+    },
+    "hi_statistics": {
+      "all": {
+        "minimum": 1.5812747733434662e-05,
+        "maximum": 0.5256364941596985,
+        "mean": 0.014641327519954084,
+        "standard_deviation": 0.030498546911133476
+      },
+      "healthy": {
+        "minimum": 0.005429099313914776,
+        "maximum": 0.006349532399326563,
+        "mean": 0.005940220348226527,
+        "standard_deviation": 0.00016729763831078905,
+        "p95": 0.006229124963283539
+      },
+      "unlabeled": {
+        "minimum": 1.5812747733434662e-05,
+        "maximum": 0.5256364941596985,
+        "mean": 0.01845760259527319,
+        "standard_deviation": 0.035921370026013505
+      }
+    },
+    "monotonicity_audit": {
+      "decreasing_steps": 504,
+      "decreasing_step_ratio": 0.5127161749745677,
+      "mean_decrease_magnitude": 0.0012631949251350966,
+      "second_difference_rmse": 0.0341632490036396,
+      "note": "Soft regularization reduces violations but does not mathematically guarantee zero violations on unseen samples."
+    },
+    "xai": {},
+    "diagnoses": []
+  }
+]

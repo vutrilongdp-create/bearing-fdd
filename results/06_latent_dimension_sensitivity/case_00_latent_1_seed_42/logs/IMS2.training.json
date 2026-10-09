@@ -1,0 +1,41 @@
+{
+  "dataset": "IMS2",
+  "model_variant": "multilatent_full_sample",
+  "architecture": "IS(20480)-3500-700-200-1-200-700-3500-IS(20480)",
+  "hi_definition": "full-sample reconstruction MSE from 1-dimensional bottleneck",
+  "latent_dim": 1,
+  "regularization_equation": null,
+  "lambda_monotonic": 0.0,
+  "lambda_smoothing": 0.0,
+  "chronological_batches": false,
+  "shuffle": true,
+  "healthy_samples": 300,
+  "raw_dimension": 20480,
+  "usable_dimension": 20480,
+  "windows_per_sample": 1,
+  "epochs": 5,
+  "batch_size": 64,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "autoencoder_params": 148569681,
+  "encoder_params": 74274601,
+  "history": {
+    "loss": [
+      0.0059699104167521,
+      0.00596084026619792,
+      0.0059535810723900795,
+      0.005947540979832411,
+      0.005941051058471203
+    ]
+  },
+  "loss": [
+    0.0059699104167521,
+    0.00596084026619792,
+    0.0059535810723900795,
+    0.005947540979832411,
+    0.005941051058471203
+  ],
+  "elapsed_seconds": 13.08,
+  "model_path": "/kaggle/working/bearing_fdd_latent_sensitivity/case_00_latent_1_seed_42/models/IMS2.multilatent_1_autoencoder.keras",
+  "encoder_path": "/kaggle/working/bearing_fdd_latent_sensitivity/case_00_latent_1_seed_42/models/IMS2.multilatent_1_encoder.keras"
+}

@@ -1,0 +1,61 @@
+{
+  "dataset": "IMS2",
+  "model_variant": "regularized_full_sample",
+  "data_validation": {
+    "path": "/kaggle/input/datasets/longvu274/datasettrain/IMS2.csv",
+    "rows": 984,
+    "dimension": 20480,
+    "fs": 20480.0,
+    "duration_seconds": 1.0
+  },
+  "hi_definition": "scalar sigmoid bottleneck with sequence regularization",
+  "healthy_samples": 300,
+  "window_size": null,
+  "windows_per_sample": 1,
+  "usable_dimension": 20480,
+  "threshold_p95": 0.4658267438411713,
+  "ffp": null,
+  "ffp_zero_based": null,
+  "ffp_one_based": null,
+  "ffp_rule": "first of 5 consecutive HI values above P95",
+  "indexing_note": "Project ffp/ffp_zero_based uses CSV row indices; ffp_one_based is the comparable sample label used by the paper.",
+  "paper_ffp": 536,
+  "paper_ffp_one_based": 536,
+  "difference_from_paper": null,
+  "difference_from_paper_one_based": null,
+  "paper_stage_thresholds_as_printed": {
+    "P95": 0.4658267438411713,
+    "MD": 0.9032416343688954,
+    "LD": 1.8064832687377907
+  },
+  "hi_statistics": {
+    "all": {
+      "minimum": 0.17449109256267548,
+      "maximum": 0.49484801292419434,
+      "mean": 0.4464131121985554,
+      "standard_deviation": 0.02583688134532668
+    },
+    "healthy": {
+      "minimum": 0.4384353458881378,
+      "maximum": 0.4838915765285492,
+      "mean": 0.4566833519935608,
+      "standard_deviation": 0.005714360605321605,
+      "p95": 0.4658267438411713
+    },
+    "unlabeled": {
+      "minimum": 0.17449109256267548,
+      "maximum": 0.49484801292419434,
+      "mean": 0.4419086210603951,
+      "standard_deviation": 0.029655565206407712
+    }
+  },
+  "monotonicity_audit": {
+    "decreasing_steps": 491,
+    "decreasing_step_ratio": 0.49949135300101727,
+    "mean_decrease_magnitude": 0.007085579958112412,
+    "second_difference_rmse": 0.04012790658131221,
+    "note": "Soft regularization reduces violations but does not mathematically guarantee zero violations on unseen samples."
+  },
+  "xai": {},
+  "diagnoses": []
+}

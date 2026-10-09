@@ -1,0 +1,89 @@
+{
+  "dataset": "IMS2",
+  "model_variant": "regularized_full_sample",
+  "architecture": "IS(20480)-3500-700-200-1-200-700-3500-IS(20480)",
+  "hi_definition": "scalar sigmoid bottleneck with sequence regularization",
+  "regularization_equation": "MSE + lambda_monotonic*(Lmon(features3500)+Lmon(HI)) + lambda_smoothing*(L2diff(features200)+L2diff(HI))",
+  "lambda_monotonic": 0.0001,
+  "lambda_smoothing": 0.0,
+  "chronological_batches": true,
+  "shuffle": false,
+  "healthy_samples": 300,
+  "raw_dimension": 20480,
+  "usable_dimension": 20480,
+  "windows_per_sample": 1,
+  "epochs": 5,
+  "batch_size": 64,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "autoencoder_params": 148569681,
+  "encoder_params": 74274601,
+  "history": {
+    "loss": [
+      0.005977658089250326,
+      0.005963651929050684,
+      0.005957588460296393,
+      0.005953810084611178,
+      0.005951538123190403
+    ],
+    "reconstruction_loss": [
+      0.005974156502634287,
+      0.005960448179394007,
+      0.005954466946423054,
+      0.005950724054127931,
+      0.005948472488671541
+    ],
+    "monotonic_loss": [
+      0.03501558154821396,
+      0.03203720599412918,
+      0.031215398758649825,
+      0.030860352143645287,
+      0.030656428635120393
+    ],
+    "monotonic_features_loss": [
+      0.02835049629211426,
+      0.028322331607341766,
+      0.028284572437405585,
+      0.028237030655145646,
+      0.028181324154138564
+    ],
+    "monotonic_hi_loss": [
+      0.006665084883570671,
+      0.0037148748990148304,
+      0.00293082594871521,
+      0.0026233209297060966,
+      0.0024751047138124706
+    ],
+    "smoothing_loss": [
+      0.008081906475126743,
+      0.007422133907675743,
+      0.007251424435526133,
+      0.00712657617405057,
+      0.007045254204422235
+    ],
+    "smoothing_features_loss": [
+      0.007270727027207613,
+      0.007166431564837694,
+      0.007088304031640291,
+      0.007004958856850862,
+      0.006928535364568234
+    ],
+    "smoothing_hi_loss": [
+      0.0008111794828437269,
+      0.0002557022758992389,
+      0.0001631205595913343,
+      0.00012161720078438521,
+      0.00011671880638459697
+    ]
+  },
+  "loss": [
+    0.005977658089250326,
+    0.005963651929050684,
+    0.005957588460296393,
+    0.005953810084611178,
+    0.005951538123190403
+  ],
+  "elapsed_seconds": 6.99,
+  "model_path": "/kaggle/working/bearing_fdd_lambda_sensitivity/case_02_lm_1em04_ls_0_seed_42/models/IMS2.regularized_full_ms2ae_autoencoder.keras",
+  "encoder_path": "/kaggle/working/bearing_fdd_lambda_sensitivity/case_02_lm_1em04_ls_0_seed_42/models/IMS2.regularized_full_ms2ae_encoder.keras"
+}

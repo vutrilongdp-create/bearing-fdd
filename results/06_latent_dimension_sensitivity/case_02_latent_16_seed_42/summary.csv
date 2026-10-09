@@ -1,0 +1,2 @@
+dataset,threshold_p95,project_ffp_zero_based,project_ffp_one_based,paper_ffp_one_based,difference_one_based,top3_xai
+IMS2,0.006227505579590798,532,533,536,-3,

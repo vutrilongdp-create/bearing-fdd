@@ -1,0 +1,76 @@
+{
+  "base_config": {
+    "input_root": "/kaggle/input/datasets/longvu274/datasettrain",
+    "output_root": "/kaggle/working/unused_base_output",
+    "datasets": [
+      "IMS2"
+    ],
+    "healthy_samples": 300,
+    "window_size": 2048,
+    "epochs": 5,
+    "batch_size": 64,
+    "eval_chunk": 40,
+    "consecutive": 5,
+    "random_seed": 42,
+    "model_variant": "regularized_full_sample",
+    "lambda_monotonic": 0.0,
+    "lambda_smoothing": 0.0,
+    "force_retrain": true,
+    "run_xai": false,
+    "xai_scope": "all",
+    "run_diagnosis": false,
+    "harmonic_tolerance_hz": 8.0,
+    "max_harmonic": 6
+  },
+  "lambda_cases": [
+    {
+      "lambda_monotonic": 0.0,
+      "lambda_smoothing": 0.0
+    },
+    {
+      "lambda_monotonic": 1e-06,
+      "lambda_smoothing": 0.0
+    },
+    {
+      "lambda_monotonic": 0.0001,
+      "lambda_smoothing": 0.0
+    },
+    {
+      "lambda_monotonic": 0.01,
+      "lambda_smoothing": 0.0
+    },
+    {
+      "lambda_monotonic": 0.0,
+      "lambda_smoothing": 1e-06
+    },
+    {
+      "lambda_monotonic": 0.0,
+      "lambda_smoothing": 0.0001
+    },
+    {
+      "lambda_monotonic": 0.0,
+      "lambda_smoothing": 0.01
+    },
+    {
+      "lambda_monotonic": 1e-06,
+      "lambda_smoothing": 1e-06
+    },
+    {
+      "lambda_monotonic": 0.0001,
+      "lambda_smoothing": 0.0001
+    },
+    {
+      "lambda_monotonic": 0.01,
+      "lambda_smoothing": 0.01
+    }
+  ],
+  "seeds": [
+    42
+  ],
+  "resume": true,
+  "keep_models": false,
+  "indexing": {
+    "project_ffp_zero_based": "CSV row index",
+    "project_ffp_one_based": "paper-comparable sample label"
+  }
+}

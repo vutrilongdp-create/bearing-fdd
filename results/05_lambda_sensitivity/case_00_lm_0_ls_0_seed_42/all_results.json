@@ -1,0 +1,63 @@
+[
+  {
+    "dataset": "IMS2",
+    "model_variant": "regularized_full_sample",
+    "data_validation": {
+      "path": "/kaggle/input/datasets/longvu274/datasettrain/IMS2.csv",
+      "rows": 984,
+      "dimension": 20480,
+      "fs": 20480.0,
+      "duration_seconds": 1.0
+    },
+    "hi_definition": "scalar sigmoid bottleneck with sequence regularization",
+    "healthy_samples": 300,
+    "window_size": null,
+    "windows_per_sample": 1,
+    "usable_dimension": 20480,
+    "threshold_p95": 0.4781459078192711,
+    "ffp": null,
+    "ffp_zero_based": null,
+    "ffp_one_based": null,
+    "ffp_rule": "first of 5 consecutive HI values above P95",
+    "indexing_note": "Project ffp/ffp_zero_based uses CSV row indices; ffp_one_based is the comparable sample label used by the paper.",
+    "paper_ffp": 536,
+    "paper_ffp_one_based": 536,
+    "difference_from_paper": null,
+    "difference_from_paper_one_based": null,
+    "paper_stage_thresholds_as_printed": {
+      "P95": 0.4781459078192711,
+      "MD": 0.7840911298990255,
+      "LD": 1.568182259798051
+    },
+    "hi_statistics": {
+      "all": {
+        "minimum": 0.15235775709152222,
+        "maximum": 0.5028854608535767,
+        "mean": 0.4417387932629847,
+        "standard_deviation": 0.02979428747164298
+      },
+      "healthy": {
+        "minimum": 0.39602231979370117,
+        "maximum": 0.4938277304172516,
+        "mean": 0.452237503528595,
+        "standard_deviation": 0.015464033187217311,
+        "p95": 0.4781459078192711
+      },
+      "unlabeled": {
+        "minimum": 0.15235775709152222,
+        "maximum": 0.5028854608535767,
+        "mean": 0.4371340957780679,
+        "standard_deviation": 0.033205579428931126
+      }
+    },
+    "monotonicity_audit": {
+      "decreasing_steps": 491,
+      "decreasing_step_ratio": 0.49949135300101727,
+      "mean_decrease_magnitude": 0.010928812810993874,
+      "second_difference_rmse": 0.053118920218871775,
+      "note": "Soft regularization reduces violations but does not mathematically guarantee zero violations on unseen samples."
+    },
+    "xai": {},
+    "diagnoses": []
+  }
+]

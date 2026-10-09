@@ -1,0 +1,62 @@
+{
+  "dataset": "IMS2",
+  "model_variant": "multilatent_full_sample",
+  "data_validation": {
+    "path": "/kaggle/input/datasets/longvu274/datasettrain/IMS2.csv",
+    "rows": 984,
+    "dimension": 20480,
+    "fs": 20480.0,
+    "duration_seconds": 1.0
+  },
+  "hi_definition": "full-sample reconstruction MSE from 1-dimensional bottleneck",
+  "healthy_samples": 300,
+  "window_size": null,
+  "latent_dim": 1,
+  "windows_per_sample": 1,
+  "usable_dimension": 20480,
+  "threshold_p95": 0.006213727593421936,
+  "ffp": 532,
+  "ffp_zero_based": 532,
+  "ffp_one_based": 533,
+  "ffp_rule": "first of 5 consecutive HI values above P95",
+  "indexing_note": "Project ffp/ffp_zero_based uses CSV row indices; ffp_one_based is the comparable sample label used by the paper.",
+  "paper_ffp": 536,
+  "paper_ffp_one_based": 536,
+  "difference_from_paper": -3,
+  "difference_from_paper_one_based": -3,
+  "paper_stage_thresholds_as_printed": {
+    "P95": 0.006213727593421936,
+    "MD": 0.007278625853359691,
+    "LD": 0.014557251706719381
+  },
+  "hi_statistics": {
+    "all": {
+      "minimum": 1.597296795807779e-05,
+      "maximum": 0.5256329774856567,
+      "mean": 0.014635061994286895,
+      "standard_deviation": 0.03049734812154666
+    },
+    "healthy": {
+      "minimum": 0.005414757411926985,
+      "maximum": 0.00635930011048913,
+      "mean": 0.005934938772891959,
+      "standard_deviation": 0.00016713014969146225,
+      "p95": 0.006213727593421936
+    },
+    "unlabeled": {
+      "minimum": 1.597296795807779e-05,
+      "maximum": 0.5256329774856567,
+      "mean": 0.018450905512442568,
+      "standard_deviation": 0.03592005652096235
+    }
+  },
+  "monotonicity_audit": {
+    "decreasing_steps": 501,
+    "decreasing_step_ratio": 0.5096642929806714,
+    "mean_decrease_magnitude": 0.0012629595146093342,
+    "second_difference_rmse": 0.034162963874640316,
+    "note": "Soft regularization reduces violations but does not mathematically guarantee zero violations on unseen samples."
+  },
+  "xai": {},
+  "diagnoses": []
+}

@@ -1,0 +1,24 @@
+{
+  "input_root": "/kaggle/input/datasets/longvu274/datasettrain",
+  "output_root": "/kaggle/working/bearing_fdd_latent_sensitivity/case_03_latent_32_seed_42",
+  "datasets": [
+    "IMS2"
+  ],
+  "healthy_samples": 300,
+  "window_size": 2048,
+  "epochs": 5,
+  "batch_size": 64,
+  "eval_chunk": 40,
+  "consecutive": 5,
+  "random_seed": 42,
+  "model_variant": "multilatent_full_sample",
+  "latent_dim": 32,
+  "lambda_monotonic": 0.0,
+  "lambda_smoothing": 0.0,
+  "force_retrain": true,
+  "run_xai": false,
+  "xai_scope": "all",
+  "run_diagnosis": false,
+  "harmonic_tolerance_hz": 8.0,
+  "max_harmonic": 6
+}
