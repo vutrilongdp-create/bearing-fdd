@@ -41,3 +41,7 @@ cookies.txt
 
 # Streamlit dashboard output
 src/backend/test_results_verification/
+
+# Backend experiment outputs
+src/backend/report_results/
+src/backend/test_results*/

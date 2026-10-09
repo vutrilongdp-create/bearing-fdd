@@ -1,10 +1,14 @@
+# Python 3.8-3.11 (TensorFlow 2.12)
 keras==2.12.0
 numpy==1.23.5
 tensorflow==2.12.0
-matlab==0.1
 pandas==2.0.0
 scipy==1.10.1
 fastdtw==0.3.4
 flask~=3.0.0
+flask-sqlalchemy>=3.0
+mysql-connector-python>=8.0
 matplotlib~=3.7.2
 seaborn~=0.12.2
+# Optional: the kurtogram is computed in Python; the MATLAB Engine for Python
+# (shipped with a licensed MATLAB installation) is only used if it is installed.
