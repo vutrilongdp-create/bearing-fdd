@@ -27,7 +27,7 @@
 
 | Area | Work |
 |---|---|
-| **Signal processing / XAI review** | Found and corrected three issues in the envelope-spectrum and XAI code: a missing Hilbert envelope, a sampling rate hard-coded to 20 kHz, and fault-frequency amplitudes looked up by FFT bin index instead of by frequency in Hz. |
+| **Signal processing / XAI review** | Found three issues in the original envelope-spectrum and XAI code: a missing Hilbert envelope, a sampling rate hard-coded to 20 kHz, and fault-frequency amplitudes looked up by FFT bin index instead of by frequency in Hz. They are fixed in my unreleased implementation. **`src/` in this repository still behaves as the original.** |
 | **Health-indicator model** | Windowed MS2AE (2,048-point windows, HI = P95 of the window reconstruction MSE) and a Table-1-inspired dense autoencoder, trained per dataset. |
 | **Experiments** | FFP, XAI, stage and range-voting diagnosis evaluation on **7 datasets** (IMS-1/2/3, XJTU-SY 2-1, 2-3, 3-1, 3-4), plus regularisation (λ) and latent-dimension sensitivity studies on IMS-2. |
 | **Critical analysis** | [`docs/critical_analysis_vi.md`](docs/critical_analysis_vi.md) lists the differences between the paper, the original code and the rerun results. |
@@ -63,6 +63,8 @@ raw vibration (IMS: 20,480 pts @ 20.48 kHz · XJTU-SY: 32,768 pts @ 25.6 kHz)
 Fault diagnosis per degradation stage (early / medium / last) is in
 [`research/results/tables/table2_results_summary.md`](research/results/tables/table2_results_summary.md).
 On IMS-2, the outer-race fault (BPFO, 1X–5X harmonics) is recovered at all three stages.
+Every number in the tables is traced to a JSON record in `research/results/logs`, except two IMS-2 values whose source run was not recorded: the threshold and the top-3 features. These two are marked
+**unverified**; see the [provenance notes](research/results/tables/table2_results_summary.md#provenance-notes).
 
 <p align="center">
   <img src="research/results/figures/fig08_hi_ffp.png" width="38%" alt="Health index of the IMS-2 dataset">
@@ -92,6 +94,24 @@ was reproduced exactly, and the system is not validated for industrial use.
 ```
 
 To run the original web tool, see the original README below.
+
+## Known issues of the upstream code
+
+The code in `src/` is the original BEARING-FDD release. It does not run from a clean clone without
+extra setup:
+
+- `src/backend/app.py` imports `flask_sqlalchemy` and connects through `mysql+mysqlconnector`, but
+  `requirements.txt` does not list `flask-sqlalchemy` or `mysql-connector-python`.
+- `enter_utils.py` computes the kurtogram through the MATLAB Engine (`matlab.engine.start_matlab()`).
+  A licensed MATLAB installation with the MATLAB Engine for Python is needed; the `matlab==0.1` pin
+  in `requirements.txt` does not provide it.
+- `app.py` and the Spring `application.properties` contain the placeholder MySQL account
+  `root` / `password`. These are sample values for a local database, not real credentials. Override
+  them for any deployment.
+- `requirements.txt` pins TensorFlow / Keras 2.12, which needs Python ≤ 3.11.
+
+My implementation will address these points: an optional MATLAB dependency, an in-memory H2 demo
+database, and complete dependencies. It will be released later (see Status above).
 
 ## Citation
 
