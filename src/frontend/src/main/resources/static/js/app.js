@@ -153,6 +153,7 @@ $(document).ready(function() {
 		$("#deleteDatasetFakeBtt").show();
 		$("#semaforoDiv").show();
 		$("#allImagesDiv").show();
+		$("#xaiImagesDiv").show();
 		$("#runNew").show();
 	}
 	if ($("#files_added").val() == 0) {
@@ -161,6 +162,7 @@ $(document).ready(function() {
 		$("#formDataCheckNewDos").hide();
 		$("#semaforoDiv").hide();
 		$("#allImagesDiv").hide();
+		$("#xaiImagesDiv").hide();
 		$("#runNew").hide();
 		$("#deleteDatasetFakeBtt").hide();
 	}
@@ -265,12 +267,12 @@ $("#saveDatasetInfoBtt").click(function() {
 	if ($("#nombre").val() == "New Dataset") {
 		$("#dataInfoAlreadyExistsH4").text($("#tmp4Exist").text());
 		$("#warningsDivNew").css({ "background-color": "red", "border": "red" });
-		e.preventDefault();
+		return false;
 	}
 	if($("#shaft_frequency").val() == 0.0){
 		$("#dataInfoAlreadyExistsH4").text($("#tmp4Zero").text());
 		$("#warningsDivNew").css({ "background-color": "red", "border": "red" });
-		e.preventDefault();
+		return false;
 	}
 });
 
@@ -324,7 +326,7 @@ $('#upload4NewAnalisys').change(function() {
 });
 
 
-$("#runNew").click(function() {
+$("#runNew").click(function(event) {
 	var nombre = $("#nombre").val();
 	var shaftFrequency = $("#shaft_frequency").val();
 	var samplingFrequency = $("#sampling_frequency").val();
@@ -356,7 +358,7 @@ $("#runNew").click(function() {
 
 			$("#runNewform").submit();
 		} else {
-			e.preventDefault();
+			event.preventDefault();
 		}
 	}
 	if ($('#upload4NewAnalisys').is(':checked')) {

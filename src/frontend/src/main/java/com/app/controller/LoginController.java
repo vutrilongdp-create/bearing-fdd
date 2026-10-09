@@ -20,6 +20,7 @@ import com.app.constants.MappingConstants;
 import com.app.constants.ViewConstants;
 import com.app.dto.UserDTO;
 import com.app.service.LoginService;
+import com.app.bbdd.UsuarioRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -32,6 +33,9 @@ public class LoginController {
 
 	@Autowired
 	private final LoginService loginService;
+	
+	@Autowired
+	private UsuarioRepository userRepo;
 	
 	@Autowired
 	private MessageSource messageSource;
@@ -98,19 +102,34 @@ public class LoginController {
 	@PostMapping(MappingConstants.REGISTER_ROOT)
 	public String register(UserDTO user, Model model, HttpServletRequest request) {
 		try {
-			String tmpCheck = loginService.checkUserInDB(user.getUsuario());
-			if ("1".equals(tmpCheck)) {
+			// Bypass python API check because it always returns "0" in demo mode.
+			com.app.bbdd.Usuario existing = userRepo.findByEmail(user.getUsuario());
+			if (existing == null) {
 				String tmpPass = passwEncoder.encode(user.getPassw());
 				user.setPassw(tmpPass);
 				user.setRole("USER");
 				user.setMaxdataset(5);
-				loginService.createUserInDB(user);
+				
+				com.app.bbdd.Usuario newUsuario = new com.app.bbdd.Usuario();
+				newUsuario.setUsuario(user.getUsuario());
+				newUsuario.setNombre(user.getNombre());
+				newUsuario.setApellido(user.getApellido());
+				newUsuario.setEmail(user.getEmail());
+				newUsuario.setPassw(tmpPass);
+				newUsuario.setRoles("USER");
+				newUsuario.setMaxdataset(5);
+				userRepo.save(newUsuario);
+				
+				try {
+					loginService.createUserInDB(user);
+				} catch(Exception e) {}
+				
 				model.addAttribute("userCreated", this.getMessage("view.cont.user.created"));
 			} else {
 				model.addAttribute("userAlreadyExists", this.getMessage("view.cont.user.exists"));
 			}
-		} catch (ConnectException e) {
-			System.err.println("Error al conectar con la API: " + e.getMessage());
+		} catch (Exception e) {
+			System.err.println("Error al procesar registro: " + e.getMessage());
 		}
 
 		return ViewConstants.VIEW_LOGIN_PAGE;

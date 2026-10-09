@@ -1,145 +1,165 @@
-<th:block th:insert="~{/fragments/head}"></th:block>
+<th:block th:insert="~{fragments/head}"></th:block>
 <title th:text="#{view.landing.title}"></title>
 
 <body>
-	<th:block th:insert="~{/fragments/header :: header}"></th:block>
-	<br>
+	<th:block th:insert="~{fragments/header :: header}"></th:block>
+
 	<main>
+		<!-- Status messages -->
 		<div th:if="${userAlreadyExists}">
 			<div class="row d-flex justify-content-center align-items-center mb-4" id="warningsDivAPI">
-				<span class="material-symbols-outlined">warning </span>
-				<h4 th:text="${userAlreadyExists}" style="margin-bottom: 0; margin-left: 1%;"></h4>
+				<span class="material-symbols-outlined">warning</span>
+				<h4 th:text="${userAlreadyExists}" style="margin-bottom:0; margin-left:1%;"></h4>
 			</div>
 		</div>
 		<div th:if="${userCreated}">
 			<div class="row d-flex justify-content-center align-items-center mb-4" id="okDiv">
-				<span class="material-symbols-outlined">done </span>
-				<h4 th:text="${userCreated}" style="margin-bottom: 0; margin-left: 1%;"></h4>
+				<span class="material-symbols-outlined">done</span>
+				<h4 th:text="${userCreated}" style="margin-bottom:0; margin-left:1%;"></h4>
 			</div>
 		</div>
-		<div id="loginSection">
-			<div class="row justify-content-center align-items-center mb-4">
-				<h1 id="loginTitle" th:text="#{view.landing.login.title}"></h1>
-			</div>
-			<div class="row justify-content-center align-items-center">
-				<form name='f' action="/webAppMotorElectrico/login" method='POST'>
-					<div th:if="${errorMessage}" class="alert alert-danger" role="alert">
-        				<span th:text="${errorMessage}"></span>
-    				</div>
-					<div class="mb-4" id="mi-div">
-						<div class="row justify-content-center align-items-center mt-2 mb-4">
-							<div class="col-3">
-								<span id="loginUser" th:text="#{view.landing.login.user}"></span>
-							</div>
-							<div class="col-9">
-								<input type='text' id="username" name="username" maxlength="16" style="width: 100%;"
-									autocomplete="off">
-							</div>
+
+		<!-- Login / Register section -->
+		<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+			<div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+
+				<!-- LOGIN FORM -->
+				<div id="loginSection">
+					<div id="mi-div" style="padding: 32px 28px;">
+						<!-- Icon + title -->
+						<div style="text-align:center; margin-bottom:24px;">
+							<span class="material-symbols-outlined"
+								style="font-size:48px; color:var(--accent-cyan); display:block; margin-bottom:8px;">
+								manage_search
+							</span>
+							<h2 id="loginTitle" th:text="#{view.landing.login.title}" style="margin-bottom:4px;"></h2>
+							<p style="color:var(--text-muted); font-size:13px; margin:0;">
+								Bearing Fault Detection &amp; Diagnosis
+							</p>
 						</div>
-						<div class="row justify-content-center align-items-center mb-2">
-							<div class="col-3">
-								<span id="loginPass" th:text="#{view.landing.login.pass}"></span>
+
+						<form name='f' action="/webAppMotorElectrico/login" method='POST'>
+							<!-- Error message -->
+							<div th:if="${errorMessage}" class="alert alert-danger" role="alert" style="margin-bottom:16px;">
+								<span th:text="${errorMessage}"></span>
 							</div>
-							<div class="col-9">
+
+							<!-- Username -->
+							<div style="margin-bottom:14px;">
+								<label for="username" id="loginUser" th:text="#{view.landing.login.user}"
+									style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);">
+								</label>
+								<input type='text' id="username" name="username" maxlength="16"
+									style="width:100%;" autocomplete="off">
+							</div>
+
+							<!-- Password -->
+							<div style="margin-bottom:24px;">
+								<label for="password" id="loginPass" th:text="#{view.landing.login.pass}"
+									style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);">
+								</label>
 								<input type='password' id="password" name="password" maxlength="16"
-									style="width: 100%;" />
+									style="width:100%;" />
 							</div>
-						</div>
+
+							<!-- Buttons -->
+							<div class="row">
+								<div class="col-6">
+									<button id="loginBtt" type="submit" style="width:100%;" th:text="#{view.landing.login.btt}"></button>
+								</div>
+								<div class="col-6">
+									<button id="signUp" style="width:100%; background:rgba(255,255,255,0.07); color:var(--text-primary); border:1px solid var(--border-color);"
+										type="button" th:text="#{view.landing.login.signup}"></button>
+								</div>
+							</div>
+						</form>
 					</div>
-					<div class="row justify-content-center align-items-center">
-						<div class="col-6">
-							<button id="loginBtt" type="submit" style="width: 100%;" th:text="#{view.landing.login.btt}"></button>
+				</div>
+
+				<!-- REGISTER FORM -->
+				<div id="singUpSection" style="display:none;">
+					<div id="mi-div" style="padding: 32px 28px;">
+						<!-- Icon + title -->
+						<div style="text-align:center; margin-bottom:24px;">
+							<span class="material-symbols-outlined"
+								style="font-size:48px; color:var(--accent-cyan); display:block; margin-bottom:8px;">
+								person_add
+							</span>
+							<h2 id="regisTitle" th:text="#{view.landing.login.signup}" style="margin-bottom:0;"></h2>
 						</div>
-						<div class="col-6">
-							<button id="signUp" style="width: 100%;" type="button"
-								th:text="#{view.landing.login.signup}"></button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		<div id="singUpSection" style="display: none;">
-			<div class="row justify-content-center align-items-center mb-4">
-				<h1 id="regisTitle" th:text="#{view.landing.login.signup}"></h1>
-			</div>
-			<div class="row justify-content-center align-items-center">
-				<form id="registerForm" action="/webAppMotorElectrico/register" method="POST">
-					<div class="mb-4" id="mi-div">
-						<div class="row justify-content-center align-items-center mt-2 mb-4">
-							<div class="col-3">
-								<span id="regisUser" th:text="#{view.landing.login.user}"></span>
+
+						<form id="registerForm" action="/webAppMotorElectrico/register" method="POST">
+							<!-- Row label helper -->
+							<div style="margin-bottom:12px;">
+								<label style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);"
+									id="regisUser" th:text="#{view.landing.login.user}"></label>
+								<input type='text' id="user_register" maxlength="16" autocomplete="off" style="width:100%;" required>
 							</div>
-							<div class="col-9">
-								<input type='text' id="user_register" maxlength="16" autocomplete="off"
-									style="width: 100%; cursor: text !important;" required>
-							</div>
-						</div>
-						<div class="row justify-content-center align-items-center mb-4">
-							<div class="col-3">
-								<span id="regisName" th:text="#{view.landing.login.name}"></span>
-							</div>
-							<div class="col-9">
+
+							<div style="margin-bottom:12px;">
+								<label style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);"
+									id="regisName" th:text="#{view.landing.login.name}"></label>
 								<input type='text' id="name_register" maxlength="16" autocomplete="off"
-									style="width: 100%;" pattern="[A-Za-z]+" required>
+									style="width:100%;" pattern="[A-Za-z]+" required>
 							</div>
-						</div>
-						<div class="row justify-content-center align-items-center mb-4">
-							<div class="col-3">
-								<span id="regisSurname" th:text="#{view.landing.login.surname}"></span>
-							</div>
-							<div class="col-9">
+
+							<div style="margin-bottom:12px;">
+								<label style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);"
+									id="regisSurname" th:text="#{view.landing.login.surname}"></label>
 								<input type='text' id="surname_register" maxlength="16" autocomplete="off"
-									pattern="[A-Za-z]+" style="width: 100%;" required>
+									pattern="[A-Za-z]+" style="width:100%;" required>
 							</div>
-						</div>
-						<div class="row justify-content-center align-items-center mb-4">
-							<div class="col-3">
-								<span th:text="#{view.landing.login.mail}"></span>
-							</div>
-							<div class="col-9">
+
+							<div style="margin-bottom:12px;">
+								<label style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);"
+									th:text="#{view.landing.login.mail}"></label>
 								<input type='email' id="mail_register" maxlength="30" autocomplete="off"
-									style="width: 100%;" required>
-								<span id="notMail" style="color: red; display: none;" th:text="#{view.landing.login.mail.fail}"></span>
+									style="width:100%;" required>
+								<span id="notMail" style="color:#fca5a5; display:none; font-size:12px; margin-top:4px; display:block;"
+									th:text="#{view.landing.login.mail.fail}"></span>
 							</div>
-						</div>
-						<div class="row justify-content-center align-items-center mb-4">
-							<div class="col-3">
-								<span id="regisPass" th:text="#{view.landing.login.pass}"></span>
-							</div>
-							<div class="col-9">
+
+							<div style="margin-bottom:12px;">
+								<label style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);"
+									id="regisPass" th:text="#{view.landing.login.pass}"></label>
 								<input type='password' id="pass_register" minlength="8" maxlength="16"
-									style="width: 100%;" autocomplete="off" required>
+									style="width:100%;" autocomplete="off" required>
 							</div>
-						</div>
-						<div class="row justify-content-center align-items-center">
-							<div class="col-3">
-								<span id="regisRepass" th:text="#{view.landing.login.repass}"></span>
-							</div>
-							<div class="col-9">
+
+							<div style="margin-bottom:6px;">
+								<label style="display:block; margin-bottom:5px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted);"
+									id="regisRepass" th:text="#{view.landing.login.repass}"></label>
 								<input type='password' id="repass_register" minlength="8" maxlength="16"
-									style="width: 100%;" autocomplete="off" required>
+									style="width:100%;" autocomplete="off" required>
 							</div>
-						</div>
-						<div class="row justify-content-center align-items-center mb-2">
-							<span id="notEqual" style="color: red; display: none;" th:text="#{view.landing.login.pass.fail}"></span>
-						</div>
-					</div>
-					<div class="row justify-content-center align-items-center mb-4">
-						<div class="col-12">
-							<input type="hidden" id="usuario" name="usuario" th:value="${usuario}" />
-							<input type="hidden" id="nombre" name="nombre" th:value="${nombre}" />
+
+							<div style="margin-bottom:16px;">
+								<span id="notEqual" style="color:#fca5a5; display:none; font-size:12px;"
+									th:text="#{view.landing.login.pass.fail}"></span>
+							</div>
+
+							<input type="hidden" id="usuario"  name="usuario"  th:value="${usuario}" />
+							<input type="hidden" id="nombre"   name="nombre"   th:value="${nombre}" />
 							<input type="hidden" id="apellido" name="apellido" th:value="${apellido}" />
-							<input type="hidden" id="email" name="email" th:value="${email}" />
-							<input type="hidden" id="passw" name="passw" th:value="${passw}" />
-							<button id="registerBtt" style="width: 100%;" type="button"
-								th:text="#{view.landing.login.register}"></button>
-						</div>
+							<input type="hidden" id="email"    name="email"    th:value="${email}" />
+							<input type="hidden" id="passw"    name="passw"    th:value="${passw}" />
+
+							<div class="row">
+								<div class="col-12">
+									<button id="registerBtt" style="width:100%;" type="button"
+										th:text="#{view.landing.login.register}"></button>
+								</div>
+							</div>
+						</form>
 					</div>
-				</form>
+				</div>
+
 			</div>
 		</div>
 	</main>
-	<th:block th:insert="~{/fragments/footer}"></th:block>
+
+	<th:block th:insert="~{fragments/footer}"></th:block>
+
 	<script>
 		$(document).ready(function () {
 			$("#logout").css({"display": "none"});
@@ -149,13 +169,15 @@
 			$("#manageLink").css({"display": "none"});
 			$("#adminUsersBtt").css({"display": "none"});
 		});
+
 		$("#signUp").click(function () {
 			$("#loginSection").css({"display": "none"});
 			$("#singUpSection").show();
 		});
+
 		$("#registerBtt").click(function () {
 			var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-			if (!emailRegex.test($("#mail_register").val())){
+			if (!emailRegex.test($("#mail_register").val())) {
 				$("#notMail").show();
 				event.preventDefault();
 			}
@@ -163,13 +185,14 @@
 				$("#notEqual").show();
 				event.preventDefault();
 			}
-			if(emailRegex.test($("#mail_register").val()) && ($("#pass_register").val() == $("#repass_register").val()) && $("#pass_register").val() != "") {
+			if (emailRegex.test($("#mail_register").val()) &&
+				($("#pass_register").val() == $("#repass_register").val()) &&
+				$("#pass_register").val() != "") {
 				$("#usuario").val($("#user_register").val());
 				$("#nombre").val($("#name_register").val());
 				$("#apellido").val($("#surname_register").val());
 				$("#email").val($("#mail_register").val());
 				$("#passw").val($("#pass_register").val());
-
 				$("#registerForm").submit();
 			}
 		});

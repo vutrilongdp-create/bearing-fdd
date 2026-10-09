@@ -1,336 +1,482 @@
-<th:block th:insert="~{/fragments/head}"></th:block>
+<th:block th:insert="~{fragments/head}"></th:block>
 <title th:text="#{view.pre.title}"></title>
 
 <body>
-	<th:block th:insert="~{/fragments/header :: header}"></th:block>
-	<br>
+	<th:block th:insert="~{fragments/header :: header}"></th:block>
+
 	<main>
+		<!-- Warning -->
 		<div th:if="${errors}">
-			<div class="row d-flex justify-content-center align-items-center mb-4" id="warningsDiv">
-				<span class="material-symbols-outlined">warning </span>
-				<h4 th:text="${errors}" style="margin-bottom: 0; margin-left: 1%;"></h4>
+			<div class="row d-flex justify-content-center align-items-center mb-3" id="warningsDiv">
+				<span class="material-symbols-outlined">warning</span>
+				<h4 th:text="${errors}" style="margin-bottom:0; margin-left:1%;"></h4>
 			</div>
 		</div>
-		<div class="row justify-content-center" id="mi-div">
+
+		<!-- Dataset title -->
+		<div class="row justify-content-center mb-3" id="mi-div" style="text-align:center; padding:12px;">
 			<div class="col-12">
-				<h4 style="text-align: center;" th:text="${selectedModel}"></h4>
+				<span class="material-symbols-outlined" style="font-size:24px; color:var(--accent-cyan); vertical-align:middle; margin-right:8px;">dataset</span>
+				<h4 th:text="${selectedModel}"
+					style="display:inline; background:linear-gradient(135deg,var(--accent-cyan),#a78bfa);
+					-webkit-background-clip:text; -webkit-text-fill-color:transparent;
+					background-clip:text; font-size:20px; font-weight:700;">
+				</h4>
 			</div>
 		</div>
-		<div class="row justify-content-between mt-4">
-			<div class="col-12 col-xl-2 align-items-center mb-4" id="mi-div">
+
+		<!-- ===== 3-Column Layout ===== -->
+		<div class="row justify-content-between mt-2">
+
+			<!-- LEFT: Input parameters (read-only) -->
+			<div class="col-12 col-xl-3 mb-3">
 				<form id="formData" name="formData" th:object="${formData}">
-					<label style="font-weight: bold;" th:text="#{view.load.in.info.static}">:</label>
-					<div class="row align-items-center mt-4">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.shaft}" style="text-align: center;">:</span>
+					<div id="mi-div" style="height:100%;">
+						<label style="font-weight:700; font-size:12px; text-transform:uppercase;
+							letter-spacing:0.8px; color:var(--accent-cyan); display:flex; align-items:center; gap:6px; margin-bottom:14px;"
+							th:text="#{view.load.in.info.static}">
+						</label>
+
+						<!-- Hidden fields -->
+						<input type="hidden" th:field="*{id}">
+						<input type="hidden" th:field="*{nombre}">
+
+						<!-- Shaft Frequency -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.shaft}" style="font-size:12px;"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" class="readonly-input" th:field="*{shaft_frequency}" readonly
+									style="text-align:center; width:100%;" maxlength="10">
+							</div>
+							<div class="col-2">
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
 						</div>
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<input type="hidden" th:field="*{id}">
-							<input type="hidden" th:field="*{nombre}">
-							<input type="text" class="readonly-input" th:field="*{shaft_frequency}" readonly
-								style="text-align: center;" maxlength="10">
+
+						<!-- Sampling Frequency -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.sampling}" style="font-size:12px;"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" class="readonly-input" th:field="*{sampling_frequency}" readonly
+									style="text-align:center; width:100%;" maxlength="10">
+							</div>
+							<div class="col-2">
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
 						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span>Hz</span>
+
+						<!-- Load -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.load}" style="font-size:12px;"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" class="readonly-input" th:field="*{carga}" readonly
+									style="text-align:center; width:100%;" maxlength="10">
+							</div>
+							<div class="col-2">
+								<span style="font-size:11px; color:var(--text-muted);">Kn</span>
+							</div>
 						</div>
-					</div>
-					<br>
-					<div class="row align-items-center">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.sampling}" style="text-align: center;">:</span>
+
+						<!-- Bearing Type -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.bearing}" style="font-size:12px;"></span>
+							</div>
+							<div class="col-6">
+								<input type="text" class="readonly-input" th:field="*{bearing_type}" readonly
+									style="text-align:center; width:100%;" maxlength="15">
+							</div>
 						</div>
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<input type="text" class="readonly-input" th:field="*{sampling_frequency}" readonly
-								style="text-align: center;" maxlength="10">
+
+						<hr style="border-color:var(--border-color); margin:10px 0;">
+						<p style="font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted); margin-bottom:8px;">
+							Fault Frequencies
+						</p>
+
+						<!-- BPFO -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.bpfo}" style="font-size:12px; color:var(--accent-cyan);"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" class="readonly-input" th:field="*{bpfo}" readonly
+									style="text-align:center; width:100%;" maxlength="10">
+							</div>
+							<div class="col-2">
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
 						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span>Hz</span>
+
+						<!-- BPFI -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.bpfi}" style="font-size:12px; color:#a78bfa;"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" class="readonly-input" th:field="*{bpfi}" readonly
+									style="text-align:center; width:100%;" maxlength="10">
+							</div>
+							<div class="col-2">
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
 						</div>
-					</div>
-					<br>
-					<div class="row align-items-center">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.load}">:</span>
+
+						<!-- BSF -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.bsf}" style="font-size:12px; color:#10b981;"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" class="readonly-input" th:field="*{bsf}" readonly
+									style="text-align:center; width:100%;" maxlength="10">
+							</div>
+							<div class="col-2">
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
 						</div>
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<input type="text" class="readonly-input" th:field="*{carga}" readonly
-								style="text-align: center;" maxlength="10">
-						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span>Kn</span>
-						</div>
-					</div>
-					<br>
-					<div class="row align-items-center">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.bearing}" style="text-align: center;">:</span>
-						</div>
-						<div class="col-12 col-xl-7 d-flex justify-content-center align-items-center">
-							<input type="text" class="readonly-input" th:field="*{bearing_type}" readonly
-								style="text-align: center;" maxlength="15">
-						</div>
-					</div>
-					<br>
-					<div class="row align-items-center">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.bpfo}">:</span>
-						</div>
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<input type="text" class="readonly-input" th:field="*{bpfo}" readonly
-								style="text-align: center;" maxlength="10">
-						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span>Hz</span>
-						</div>
-					</div>
-					<br>
-					<div class="row align-items-center">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.bpfi}">:</span>
-						</div>
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<input type="text" class="readonly-input" th:field="*{bpfi}" readonly
-								style="text-align: center;" maxlength="10">
-						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span>Hz</span>
-						</div>
-					</div>
-					<br>
-					<div class="row align-items-center">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.bsf}">:</span>
-						</div>
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<input type="text" class="readonly-input" th:field="*{bsf}" readonly
-								style="text-align: center;" maxlength="10">
-						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span>Hz</span>
-						</div>
-					</div>
-					<br>
-					<div class="row align-items-center">
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.in.ftf}">:</span>
-						</div>
-						<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center">
-							<input type="text" class="readonly-input" th:field="*{ftf}" readonly
-								style="text-align: center;" maxlength="10">
-						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span>Hz</span>
+
+						<!-- FTF -->
+						<div class="row align-items-center mb-2">
+							<div class="col-6">
+								<span th:text="#{view.load.in.ftf}" style="font-size:12px; color:#f59e0b;"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" class="readonly-input" th:field="*{ftf}" readonly
+									style="text-align:center; width:100%;" maxlength="10">
+							</div>
+							<div class="col-2">
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
 						</div>
 					</div>
 				</form>
 			</div>
-			<br>
-			<div class="col-12 col-xl-9">
-				<div class="row">
-					<div class="col-12" id="mi-div">
-						<h4 id="faultInfoTimming" th:text="${faultInfoTimming}" style="text-align: center;"></h4>
-						<div class="row" style="text-align: center;">
-							<div class="col-12 col-xl-6">
-								<img th:src="@{/images/test_graf.png}" style="width: 66%;" id="imgph1">
-								<div th:if="${img2Front1Encoded}">
-									<img th:src="@{'data:image/png;base64,' + ${img2Front1Encoded}}" alt="Imagen 1"
-										style="width: 66%;" id="img1" data-toggle="modal" data-target="#imagenModal1">
-									<br>
-									<span th:text="#{view.load.info.faults}"></span>
-									<span th:text="${faults_Outer_race}"></span>	
-									<span>Hz</span>						
-								</div>
-								<div th:if="${img2Front3Encoded}">
-									<img th:src="@{'data:image/png;base64,' + ${img2Front3Encoded}}" alt="Imagen 1"
-										style="width: 66%;" id="img3" data-toggle="modal" data-target="#imagenModal3">
-									<br>
-									<span th:text="#{view.load.info.faults}"></span>
-									<span th:text="${faults_Bearing_Balls}"></span>
-									<span>Hz</span>
-								</div>
+
+			<!-- CENTER: Visualizations -->
+			<div class="col-12 col-xl-6 mb-3">
+				<div id="mi-div">
+					<h4 id="faultInfoTimming" th:text="${faultInfoTimming}"
+						style="text-align:center; font-size:14px; margin-bottom:10px;"></h4>
+
+					<p style="font-size:10px; text-transform:uppercase; letter-spacing:0.8px;
+						color:var(--text-muted); margin-bottom:10px; text-align:center;">
+						FFT Fault Analysis
+					</p>
+
+					<div class="row" style="text-align:center;">
+						<!-- Outer Race + Balls -->
+						<div class="col-12 col-xl-6">
+							<img th:src="@{/images/test_graf.png}"
+								style="width:85%; opacity:0.2; filter:grayscale(80%);" id="imgph1">
+							<div th:if="${img2Front1Encoded}" style="margin-bottom:10px;">
+								<p style="font-size:11px; font-weight:600; color:var(--accent-cyan); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">
+									Outer Race (BPFO)
+								</p>
+								<img th:src="@{'data:image/png;base64,' + ${img2Front1Encoded}}"
+									alt="Outer Race FFT"
+									style="width:85%; border-radius:8px;" id="img1"
+									data-toggle="modal" data-target="#imagenModal1">
+								<br>
+								<span style="font-size:11px; color:var(--text-muted);" th:text="#{view.load.info.faults}"></span>
+								<span style="font-size:11px; color:var(--accent-cyan);" th:text="${faults_Outer_race}"></span>
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
 							</div>
-							<div class="col-12 col-xl-6">
-								<img th:src="@{/images/test_graf.png}" style="width: 66%;" id="imgph2">
-								<div th:if="${img2Front2Encoded}">
-									<img th:src="@{'data:image/png;base64,' + ${img2Front2Encoded}}" alt="Imagen 2"
-										style="width: 66%;" id="img2" data-toggle="modal" data-target="#imagenModal2">
-									<br>
-									<span th:text="#{view.load.info.faults}"></span>
-									<span th:text="${faults_Inner_race}"></span>
-									<span>Hz</span>
-								</div>
-								<div th:if="${img2Front4Encoded}">
-									<img th:src="@{'data:image/png;base64,' + ${img2Front4Encoded}}" alt="Imagen 2"
-										style="width: 66%;" id="img4" data-toggle="modal" data-target="#imagenModal4">
-									<br>
-									<span th:text="#{view.load.info.faults}"></span>
-									<span th:text="${faults_Cage}"></span>
-									<span>Hz</span>
-								</div>
+							<div th:if="${img2Front3Encoded}" style="margin-bottom:10px;">
+								<p style="font-size:11px; font-weight:600; color:#10b981; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">
+									Bearing Balls (BSF)
+								</p>
+								<img th:src="@{'data:image/png;base64,' + ${img2Front3Encoded}}"
+									alt="Bearing Balls FFT"
+									style="width:85%; border-radius:8px;" id="img3"
+									data-toggle="modal" data-target="#imagenModal3">
+								<br>
+								<span style="font-size:11px; color:var(--text-muted);" th:text="#{view.load.info.faults}"></span>
+								<span style="font-size:11px; color:#10b981;" th:text="${faults_Bearing_Balls}"></span>
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
 							</div>
 						</div>
-						<div th:if="${img2FrontNotFaultEncoded}">
-							<div class="row justify-content-between align-items-center" style="text-align: center;">
-								<div class="col-12">
-									<img th:src="@{'data:image/png;base64,' + ${img2FrontNotFaultEncoded}}" alt="Imagen OK"
-										style="width: 25.3%;" id="imgOk">
-								</div>
+						<!-- Inner Race + Cage -->
+						<div class="col-12 col-xl-6">
+							<img th:src="@{/images/test_graf.png}"
+								style="width:85%; opacity:0.2; filter:grayscale(80%);" id="imgph2">
+							<div th:if="${img2Front2Encoded}" style="margin-bottom:10px;">
+								<p style="font-size:11px; font-weight:600; color:#a78bfa; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">
+									Inner Race (BPFI)
+								</p>
+								<img th:src="@{'data:image/png;base64,' + ${img2Front2Encoded}}"
+									alt="Inner Race FFT"
+									style="width:85%; border-radius:8px;" id="img2"
+									data-toggle="modal" data-target="#imagenModal2">
+								<br>
+								<span style="font-size:11px; color:var(--text-muted);" th:text="#{view.load.info.faults}"></span>
+								<span style="font-size:11px; color:#a78bfa;" th:text="${faults_Inner_race}"></span>
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
+							<div th:if="${img2Front4Encoded}" style="margin-bottom:10px;">
+								<p style="font-size:11px; font-weight:600; color:#f59e0b; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">
+									Cage (FTF)
+								</p>
+								<img th:src="@{'data:image/png;base64,' + ${img2Front4Encoded}}"
+									alt="Cage FFT"
+									style="width:85%; border-radius:8px;" id="img4"
+									data-toggle="modal" data-target="#imagenModal4">
+								<br>
+								<span style="font-size:11px; color:var(--text-muted);" th:text="#{view.load.info.faults}"></span>
+								<span style="font-size:11px; color:#f59e0b;" th:text="${faults_Cage}"></span>
+								<span style="font-size:11px; color:var(--text-muted);">Hz</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Healthy OK image -->
+					<div th:if="${img2FrontNotFaultEncoded}">
+						<div class="row justify-content-center" style="text-align:center;">
+							<div class="col-12">
+								<img th:src="@{'data:image/png;base64,' + ${img2FrontNotFaultEncoded}}"
+									alt="Bearing OK" style="width:28%; border-radius:8px;" id="imgOk">
 							</div>
 						</div>
 					</div>
 				</div>
-				<br>
-				<div class="row mt-3">
-					<div class="col-12" id="mi-div">
-						<div class="row" style="text-align: center;">
-							<div class="col-12 col-xl-3">
-								<div class="circle" id="colorCircle1"></div>
-								<span style="font-weight: bold;" th:text="#{view.load.tl.outer}"></span>
+		</div>
+
+			<!-- XAI Analysis Plots (plot5-8) -->
+			<div th:if="${imgXai5Encoded or imgXai6Encoded or imgXai7Encoded or imgXai8Encoded}" style="margin-top:12px;">
+				<div id="mi-div">
+					<p style="font-size:10px; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted); margin-bottom:10px; text-align:center;">
+						XAI — Explainability Analysis
+					</p>
+					<div class="row" style="text-align:center;">
+						<div class="col-12 col-xl-6" style="margin-bottom:10px;">
+							<div th:if="${imgXai5Encoded}">
+								<p style="font-size:11px; font-weight:600; color:var(--accent-cyan); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">HI Matrix</p>
+								<img th:src="@{'data:image/png;base64,' + ${imgXai5Encoded}}" alt="Health Index Matrix" style="width:90%; border-radius:8px; cursor:pointer;">
 							</div>
-							<div class="col-12 col-xl-3">
-								<div class="circle" id="colorCircle2"></div>
-								<span style="font-weight: bold;" th:text="#{view.load.tl.inner}"></span>
+						</div>
+						<div class="col-12 col-xl-6" style="margin-bottom:10px;">
+							<div th:if="${imgXai6Encoded}">
+								<p style="font-size:11px; font-weight:600; color:#a78bfa; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">HI Trend</p>
+								<img th:src="@{'data:image/png;base64,' + ${imgXai6Encoded}}" alt="HI Trend" style="width:90%; border-radius:8px; cursor:pointer;">
 							</div>
-							<div class="col-12 col-xl-3">
-								<div class="circle" id="colorCircle3"></div>
-								<span style="font-weight: bold;" th:text="#{view.load.tl.bear}"></span>
+						</div>
+						<div class="col-12 col-xl-6" style="margin-bottom:10px;">
+							<div th:if="${imgXai7Encoded}">
+								<p style="font-size:11px; font-weight:600; color:var(--accent-green); margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Time Report</p>
+								<img th:src="@{'data:image/png;base64,' + ${imgXai7Encoded}}" alt="Time Report" style="width:90%; border-radius:8px; cursor:pointer;">
 							</div>
-							<div class="col-12 col-xl-3">
-								<div class="circle" id="colorCircle4"></div>
-								<span style="font-weight: bold;" th:text="#{view.load.tl.cage}"></span>
+						</div>
+						<div class="col-12 col-xl-6" style="margin-bottom:10px;">
+							<div th:if="${imgXai8Encoded}">
+								<p style="font-size:11px; font-weight:600; color:#f59e0b; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px;">Freq Report</p>
+								<img th:src="@{'data:image/png;base64,' + ${imgXai8Encoded}}" alt="Frequency Report" style="width:90%; border-radius:8px; cursor:pointer;">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<br>
-		<div class="row align-items-center justify-content-between">
-			<div class="col-12 col-xl-5 mb-4" id="mi-div">
+
+		<!-- RIGHT: Controls + Semaforo -->
+			<div class="col-12 col-xl-3 mb-3">
+
+				<!-- Analysis settings -->
 				<form id="formDataCheck" name="formDataCheck" th:object="${formDataCheck}">
-					<div class="row justify-content-between align-items-center">
-						<div class="col-12 col-xl-4 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.select.healthy}"></span>
+					<div id="mi-div" style="margin-bottom:12px;">
+						<label style="font-weight:700; font-size:12px; text-transform:uppercase;
+							letter-spacing:0.8px; color:var(--text-secondary); display:flex; align-items:center; gap:6px; margin-bottom:12px;">
+							<span class="material-symbols-outlined" style="font-size:16px; color:var(--accent-cyan);">settings</span>
+							Analysis Settings
+						</label>
+
+						<div class="row align-items-center mb-2">
+							<div class="col-7">
+								<span style="font-size:12px;" th:text="#{view.load.select.healthy}"></span>
+							</div>
+							<div class="col-4">
+								<input type="text" placeholder="0" id="n_healthy_data"
+									style="text-align:center; width:100%;"
+									pattern="[0-9]*\.?[0-9]*" class="onlyNums" minlength="1" maxlength="6" required>
+							</div>
 						</div>
-						<div class="col-12 col-xl-3 d-flex justify-content-center align-items-center">
-							<input type="text" placeholder="0" id="n_healthy_data" style="text-align: center;"
-								pattern="[0-9]*\.?[0-9]*" class="onlyNums" minlength="1" maxlength="6" required>
+
+						<div class="row align-items-center mb-1">
+							<div class="col-12">
+								<span style="font-size:11px; color:var(--text-muted);" th:text="#{view.load.select.check}"></span>
+							</div>
 						</div>
-						<div class="col-12 col-xl-3 d-flex justify-content-center align-items-center"></div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center"></div>
-						<div class="col-12 col-xl-3 d-flex justify-content-center align-items-center"></div>
-					</div>
-					<div class="row justify-content-between align-items-center mt-2">
-						<div class="col-12 col-xl-4 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.select.check}"></span>
-						</div>
-						<div class="col-12 col-xl-3 d-flex justify-content-center align-items-center">
-							<input type="text" th:field="*{min_to_check}" style="text-align: center;"
-								pattern="[0-9]*\.?[0-9]*" class="onlyNums" minlength="1" maxlength="6">
-						</div>
-						<div class="col-12 col-xl-1 d-flex justify-content-center align-items-center">
-							<span th:text="#{view.load.select.to}"></span>
-						</div>
-						<div class="col-12 col-xl-3 d-flex justify-content-center align-items-center">
-							<input type="text" th:field="*{max_to_check}" style="text-align: center;"
-								pattern="[0-9]*\.?[0-9]*" class="onlyNums" minlength="1" maxlength="6">
+						<div class="row align-items-center">
+							<div class="col-5">
+								<input type="text" th:field="*{min_to_check}"
+									style="text-align:center; width:100%;"
+									pattern="[0-9]*\.?[0-9]*" class="onlyNums" minlength="1" maxlength="6">
+							</div>
+							<div class="col-2 text-center">
+								<span style="font-size:11px; color:var(--text-muted);" th:text="#{view.load.select.to}"></span>
+							</div>
+							<div class="col-5">
+								<input type="text" th:field="*{max_to_check}"
+									style="text-align:center; width:100%;"
+									pattern="[0-9]*\.?[0-9]*" class="onlyNums" minlength="1" maxlength="6">
+							</div>
 						</div>
 					</div>
 				</form>
+
+				<!-- Semaforo -->
+				<div id="mi-div">
+					<p style="font-size:10px; text-transform:uppercase; letter-spacing:0.8px;
+						color:var(--text-muted); text-align:center; margin-bottom:6px;">
+						Fault Status Indicator
+					</p>
+					<div class="row" style="text-align:center;">
+						<div class="col-6 mb-2">
+							<div class="circle" id="colorCircle1"></div>
+							<span style="font-weight:600; font-size:10px; text-transform:uppercase;
+								letter-spacing:0.5px; color:var(--accent-cyan);"
+								th:text="#{view.load.tl.outer}"></span>
+						</div>
+						<div class="col-6 mb-2">
+							<div class="circle" id="colorCircle2"></div>
+							<span style="font-weight:600; font-size:10px; text-transform:uppercase;
+								letter-spacing:0.5px; color:#a78bfa;"
+								th:text="#{view.load.tl.inner}"></span>
+						</div>
+						<div class="col-6 mb-2">
+							<div class="circle" id="colorCircle3"></div>
+							<span style="font-weight:600; font-size:10px; text-transform:uppercase;
+								letter-spacing:0.5px; color:#10b981;"
+								th:text="#{view.load.tl.bear}"></span>
+						</div>
+						<div class="col-6 mb-2">
+							<div class="circle" id="colorCircle4"></div>
+							<span style="font-weight:600; font-size:10px; text-transform:uppercase;
+								letter-spacing:0.5px; color:#f59e0b;"
+								th:text="#{view.load.tl.cage}"></span>
+						</div>
+					</div>
+				</div>
+
 			</div>
-			<div class="col-12 col-xl-2 d-flex justify-content-center align-items-center mb-4">
-				<form id="runPreform" action="/webAppMotorElectrico/runPreloaded" method="post">
-					<input type="hidden" id="nombre_req" name="nombre_req" th:value="${nombre_req}" />
-					<input type="hidden" id="shaft_frequency_req" name="shaft_frequency_req" th:value="${shaft_frequency_req}" />
-					<input type="hidden" id="sampling_frequency_req" name="sampling_frequency_req"
-						th:value="${sampling_frequency_req}" />
-					<input type="hidden" id="bpfo_req" name="bpfo_req" th:value="${bpfo_req}" />
-					<input type="hidden" id="bpfi_req" name="bpfi_req" th:value="${bpfi_req}" />
-					<input type="hidden" id="bsf_req" name="bsf_req" th:value="${bsf_req}" />
-					<input type="hidden" id="ftf_req" name="ftf_req" th:value="${ftf_req}" />
-					<input type="hidden" id="first_sample_req" name="first_sample_req" th:value="${first_sample_req}" />
-					<input type="hidden" id="analyzed_number_req" name="analyzed_number_req" th:value="${analyzed_number_req}" />
-					<input type="hidden" id="healthy_number_req" name="healthy_number_req" th:value="${healthy_number_req}" required />
-					<button id="runPre" type="button" th:text="#{view.load.run.btt}"></button>
-					<button id="back-btt" type="button" th:text="#{view.load.bck.btt}" onclick="window.location.href = '/webAppMotorElectrico/home';"></button>
+		</div>
+
+		<!-- ===== Action Buttons ===== -->
+		<div class="row align-items-center justify-content-center mt-2 mb-2">
+			<div class="d-flex justify-content-center flex-wrap" style="gap:8px;">
+				<form id="runPreform" action="/webAppMotorElectrico/runPreloaded" method="post" style="display:contents;">
+					<input type="hidden" id="nombre_req"             name="nombre_req"             th:value="${nombre_req}" />
+					<input type="hidden" id="shaft_frequency_req"    name="shaft_frequency_req"    th:value="${shaft_frequency_req}" />
+					<input type="hidden" id="sampling_frequency_req" name="sampling_frequency_req" th:value="${sampling_frequency_req}" />
+					<input type="hidden" id="bpfo_req"               name="bpfo_req"               th:value="${bpfo_req}" />
+					<input type="hidden" id="bpfi_req"               name="bpfi_req"               th:value="${bpfi_req}" />
+					<input type="hidden" id="bsf_req"                name="bsf_req"                th:value="${bsf_req}" />
+					<input type="hidden" id="ftf_req"                name="ftf_req"                th:value="${ftf_req}" />
+					<input type="hidden" id="first_sample_req"       name="first_sample_req"       th:value="${first_sample_req}" />
+					<input type="hidden" id="analyzed_number_req"    name="analyzed_number_req"    th:value="${analyzed_number_req}" />
+					<input type="hidden" id="healthy_number_req"     name="healthy_number_req"     th:value="${healthy_number_req}" required />
+
+					<button id="runPre" type="button"
+						style="background:linear-gradient(135deg,var(--accent-cyan),#0099cc); color:#0a0e1a; font-weight:700; min-width:120px;"
+						th:text="#{view.load.run.btt}">
+					</button>
+					<button id="back-btt" type="button" th:text="#{view.load.bck.btt}"
+						onclick="window.location.href='/webAppMotorElectrico/home';">
+					</button>
 				</form>
-			</div>
-			<div class="col-12 col-xl-5 d-flex justify-content-center align-items-center mb-4">
-				<button type="button" id="pdf1" style="display: none;">
-					<span class="material-symbols-outlined" style="vertical-align: middle;">download</span>
-					<span th:text="#{view.load.exp.btt}" style="vertical-align: middle;"></span>
+
+				<button type="button" id="pdf1" style="display:none;
+					background:linear-gradient(135deg,var(--accent-violet),#5b21b6); color:#fff;">
+					<span class="material-symbols-outlined" style="vertical-align:middle; margin-right:4px; font-size:16px;">download</span>
+					<span th:text="#{view.load.exp.btt}" style="vertical-align:middle;"></span>
 				</button>
-				<button type="button" id="pdf2" style="display: none;">
-					<span class="material-symbols-outlined" style="vertical-align: middle;">download</span>
-					<span th:text="#{view.load.int.btt}" style="vertical-align: middle;"></span>
+				<button type="button" id="pdf2" style="display:none;
+					background:linear-gradient(135deg,var(--accent-violet),#5b21b6); color:#fff;">
+					<span class="material-symbols-outlined" style="vertical-align:middle; margin-right:4px; font-size:16px;">analytics</span>
+					<span th:text="#{view.load.int.btt}" style="vertical-align:middle;"></span>
 				</button>
 			</div>
 		</div>
+
+		<!-- Result hidden fields -->
 		<form id="runResForm" name="runResForm" th:object="${runResForm}">
 			<div th:if="${runResForm}">
-				<input type="hidden" id="n_healthy_used" name="n_healthy_used" th:value="${n_healthy_used}" />
-				<input type="hidden" id="fault_detected" name="fault_detected" th:field="*{fault_detected}" />
-				<input type="hidden" id="fault_info" name="fault_info" th:field="*{fault_info}" />
-				<input type="hidden" id="fault_type" name="fault_type" th:field="*{fault_type}" />
-				<input type="hidden" id="analysis_result" name="analysis_result" th:field="*{analysis_result}" />
-				<input type="hidden" id="fault_details_Outer_race" name="fault_details_Outer_race" th:value="${data_Outer_race}" />
-				<input type="hidden" id="fault_details_Inner_race" name="fault_details_Inner_race" th:value="${data_Inner_race}" />
+				<input type="hidden" id="n_healthy_used"             name="n_healthy_used"             th:value="${n_healthy_used}" />
+				<input type="hidden" id="fault_detected"             name="fault_detected"             th:field="*{fault_detected}" />
+				<input type="hidden" id="fault_info"                 name="fault_info"                 th:field="*{fault_info}" />
+				<input type="hidden" id="fault_type"                 name="fault_type"                 th:field="*{fault_type}" />
+				<input type="hidden" id="analysis_result"            name="analysis_result"            th:field="*{analysis_result}" />
+				<input type="hidden" id="fault_details_Outer_race"   name="fault_details_Outer_race"   th:value="${data_Outer_race}" />
+				<input type="hidden" id="fault_details_Inner_race"   name="fault_details_Inner_race"   th:value="${data_Inner_race}" />
 				<input type="hidden" id="fault_details_Bearing_Balls" name="fault_details_Bearing_Balls" th:value="${data_Bearing_Balls}" />
-				<input type="hidden" id="fault_details_Cage" name="fault_details_Cage" th:value="${data_Cage}" />
-				<input type="hidden" id="resultTimeReport" name="resultTimeReport" th:field="*{resultTimeReport}" />
-				<input type="hidden" id="resultFreqReport" name="resultFreqReport" th:field="*{resultFreqReport}" />
+				<input type="hidden" id="fault_details_Cage"         name="fault_details_Cage"         th:value="${data_Cage}" />
+				<input type="hidden" id="resultTimeReport"           name="resultTimeReport"           th:field="*{resultTimeReport}" />
+				<input type="hidden" id="resultFreqReport"           name="resultFreqReport"           th:field="*{resultFreqReport}" />
 			</div>
 		</form>
 	</main>
-	<div class="modal fade" id="imagenModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
-		aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body d-flex align-items-center justify-content-center">
+
+	<!-- Image Modals -->
+	<div class="modal fade" id="imagenModal1" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body d-flex align-items-center justify-content-center flex-column" style="padding:24px;">
+					<p style="font-size:12px; text-transform:uppercase; color:var(--accent-cyan); letter-spacing:0.8px; font-weight:600; margin-bottom:12px;">
+						Outer Race (BPFO) — FFT Analysis
+					</p>
 					<div th:if="${img2Front1Encoded}">
-                    	<img th:src="@{'data:image/png;base64,' + ${img2Front1Encoded}}" alt="Imagen 1" style="width: 75%;">
-                    	<br>
-						<span th:text="#{view.load.info.faults}"></span>
-						<span th:text="${faults_Outer_race}"></span>
-						<span>Hz</span>	
+						<img th:src="@{'data:image/png;base64,' + ${img2Front1Encoded}}" alt="Outer Race FFT" style="width:100%; border-radius:8px;">
+						<p style="text-align:center; margin-top:8px; font-size:13px; color:var(--text-secondary);">
+							<span th:text="#{view.load.info.faults}"></span>
+							<span style="color:var(--accent-cyan); font-weight:600;" th:text="${faults_Outer_race}"></span> Hz
+						</p>
 					</div>
-                </div>
-                <div class="modal-footer">
+				</div>
+				<div class="modal-footer">
 					<button type="button" data-dismiss="modal" th:text="#{view.modal.footer.close}"></button>
 				</div>
-            </div>
-        </div>
-    </div>
-	<div class="modal fade" id="imagenModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
-		aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body d-flex align-items-center justify-content-center">
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="imagenModal3" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-body d-flex align-items-center justify-content-center flex-column" style="padding:24px;">
+					<p style="font-size:12px; text-transform:uppercase; color:#10b981; letter-spacing:0.8px; font-weight:600; margin-bottom:12px;">
+						Bearing Balls (BSF) — FFT Analysis
+					</p>
 					<div th:if="${img2Front3Encoded}">
-                    	<img th:src="@{'data:image/png;base64,' + ${img2Front3Encoded}}" alt="Imagen 3" style="width: 75%;">
-                    	<br>
-						<span th:text="#{view.load.info.faults}"></span>
-						<span th:text="${faults_Bearing_Balls}"></span>
-						<span>Hz</span>
+						<img th:src="@{'data:image/png;base64,' + ${img2Front3Encoded}}" alt="Bearing Balls FFT" style="width:100%; border-radius:8px;">
+						<p style="text-align:center; margin-top:8px; font-size:13px; color:var(--text-secondary);">
+							<span th:text="#{view.load.info.faults}"></span>
+							<span style="color:#10b981; font-weight:600;" th:text="${faults_Bearing_Balls}"></span> Hz
+						</p>
 					</div>
-                </div>
-                <div class="modal-footer">
+				</div>
+				<div class="modal-footer">
 					<button type="button" data-dismiss="modal" th:text="#{view.modal.footer.close}"></button>
 				</div>
-            </div>
-        </div>
-    </div>
-	<div class="modal fade" id="imagenModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="imagenModal2" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 			<div class="modal-content">
-				<div class="modal-body d-flex align-items-center justify-content-center">
+				<div class="modal-body d-flex align-items-center justify-content-center flex-column" style="padding:24px;">
+					<p style="font-size:12px; text-transform:uppercase; color:#a78bfa; letter-spacing:0.8px; font-weight:600; margin-bottom:12px;">
+						Inner Race (BPFI) — FFT Analysis
+					</p>
 					<div th:if="${img2Front2Encoded}">
-						<img th:src="@{'data:image/png;base64,' + ${img2Front2Encoded}}" alt="Imagen 2" style="width: 75%;">
-						<br>
-						<span th:text="#{view.load.info.faults}"></span>
-						<span th:text="${faults_Inner_race}"></span>
-						<span>Hz</span>
+						<img th:src="@{'data:image/png;base64,' + ${img2Front2Encoded}}" alt="Inner Race FFT" style="width:100%; border-radius:8px;">
+						<p style="text-align:center; margin-top:8px; font-size:13px; color:var(--text-secondary);">
+							<span th:text="#{view.load.info.faults}"></span>
+							<span style="color:#a78bfa; font-weight:600;" th:text="${faults_Inner_race}"></span> Hz
+						</p>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -339,17 +485,20 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="imagenModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
+
+	<div class="modal fade" id="imagenModal4" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-xl modal-dialog-centered" role="document">
 			<div class="modal-content">
-				<div class="modal-body d-flex align-items-center justify-content-center">
+				<div class="modal-body d-flex align-items-center justify-content-center flex-column" style="padding:24px;">
+					<p style="font-size:12px; text-transform:uppercase; color:#f59e0b; letter-spacing:0.8px; font-weight:600; margin-bottom:12px;">
+						Cage (FTF) — FFT Analysis
+					</p>
 					<div th:if="${img2Front4Encoded}">
-						<img th:src="@{'data:image/png;base64,' + ${img2Front4Encoded}}" alt="Imagen 4" style="width: 75%;">
-						<br>
-						<span th:text="#{view.load.info.faults}"></span>
-						<span th:text="${faults_Cage}"></span>
-						<span>Hz</span>
+						<img th:src="@{'data:image/png;base64,' + ${img2Front4Encoded}}" alt="Cage FFT" style="width:100%; border-radius:8px;">
+						<p style="text-align:center; margin-top:8px; font-size:13px; color:var(--text-secondary);">
+							<span th:text="#{view.load.info.faults}"></span>
+							<span style="color:#f59e0b; font-weight:600;" th:text="${faults_Cage}"></span> Hz
+						</p>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -358,15 +507,17 @@
 			</div>
 		</div>
 	</div>
-	<th:block th:insert="~{/fragments/footer}"></th:block>
+
+	<th:block th:insert="~{fragments/footer}"></th:block>
+	<script>
+		$(document).ready(function () {
+			$("#manageLink").css({"display": "inline"});
+			if ($("#loggedUserFlag").val() == 'admin') {
+				$("#adminUsersBtt").css({"display": "inline"});
+			}
+			$("#logout").css({"display": "inline"});
+		});
+	</script>
 </body>
-<script>
-	$(document).ready(function () {
-		$("#manageLink").css({"display": "inline"});
-		if ($("#loggedUserFlag").val() == 'admin') {
-			$("#adminUsersBtt").css({"display": "inline"});
-		}
-		$("#logout").css({"display": "inline"});
-	});
-</script>
+
 </html>

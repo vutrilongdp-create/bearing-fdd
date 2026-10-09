@@ -46,6 +46,7 @@ public class SecurityConfig {
 				.requestMatchers("/webAppMotorElectrico/login").permitAll()
 				.requestMatchers("/webAppMotorElectrico/register").permitAll()
 				.requestMatchers("/webAppMotorElectrico/changeLocale").permitAll()
+				.requestMatchers("/error").permitAll()
 				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 				.anyRequest().authenticated()
 			).csrf(AbstractHttpConfigurer::disable)

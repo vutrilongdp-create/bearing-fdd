@@ -1,59 +1,108 @@
-<th:block th:insert="~{/fragments/head}"></th:block>
+<th:block th:insert="~{fragments/head}"></th:block>
 <title th:text="#{view.home.title}"></title>
 
 <body>
-	<th:block th:insert="~{/fragments/header :: header}"></th:block>
-	<br>
+	<th:block th:insert="~{fragments/header :: header}"></th:block>
+
 	<main>
-		<div class="row d-flex justify-content-center align-items-center">
-			<div class="col-12 col-md-11">
-				<div th:if="${errorsAPI}">
-					<div class="row d-flex justify-content-center align-items-center mb-4" id="warningsDivAPI">
-						<span class="material-symbols-outlined">warning </span>
-						<h4 th:text="${errorsAPI}" style="margin-bottom: 0; margin-left: 1%;"></h4>
+		<!-- API warning -->
+		<div th:if="${errorsAPI}">
+			<div class="row d-flex justify-content-center align-items-center mb-4" id="warningsDivAPI">
+				<span class="material-symbols-outlined">warning</span>
+				<h4 th:text="${errorsAPI}" style="margin-bottom:0; margin-left:1%;"></h4>
+			</div>
+		</div>
+
+		<div class="row d-flex justify-content-center align-items-center" style="min-height:75vh;">
+			<div class="col-12 col-md-11 col-xl-9">
+
+				<!-- Title -->
+				<div class="row justify-content-center mb-4" style="text-align:center;">
+					<div class="col-12">
+						<span class="material-symbols-outlined"
+							style="font-size:40px; color:var(--accent-cyan); display:block; margin-bottom:8px;">
+							scatter_plot
+						</span>
+						<h3 style="background:linear-gradient(135deg,var(--accent-cyan),#a78bfa);
+							-webkit-background-clip:text; -webkit-text-fill-color:transparent;
+							background-clip:text; font-weight:700; margin-bottom:4px;"
+							th:text="#{view.home.table.tittle}">
+						</h3>
+						<p style="color:var(--text-muted); font-size:13px; margin:0;">
+							Select a dataset to run bearing fault detection analysis
+						</p>
 					</div>
 				</div>
-				<div class="row justify-content-center" style="text-align: center;">
-					<div class="col-12" id="mi-div">
-						<label th:text="#{view.home.table.tittle}"></label>
-					</div>
-				</div>
-				<div class="row d-flex justify-content-center mt-2" style="text-align: center;">
-					<div class="col-12 col-md-6 mb-2" id="mi-div-home-right">
-						<label th:text="#{view.home.table.pre}"></label>
+
+				<!-- Dataset cards -->
+				<div class="row d-flex justify-content-center mt-2">
+
+					<!-- Preloaded datasets -->
+					<div class="col-12 col-md-6 mb-3" id="mi-div-home-right">
+						<div style="margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+							<span class="material-symbols-outlined" style="color:var(--accent-cyan); font-size:20px;">dataset</span>
+							<label th:text="#{view.home.table.pre}"
+								style="font-weight:600; font-size:14px; color:var(--text-primary); margin:0;"></label>
+						</div>
 						<form id="formDataset" name="formDataset" method="get" action="/webAppMotorElectrico/preloaded">
-							<div id="mi-div-home" class="mb-2">
-								<div th:each="model, iterStat : ${resultDatatest.modelsList}"
-									style="text-align: start;">
-									<input type="checkbox" th:id="${'dataset_' + iterStat.index}" th:value="${model}"
-										name="selectedModel" class="single-checkbox" />
-									<label th:for="${'dataset_' + iterStat.index}"
-										th:text="${resultDatatest.modelsNames[iterStat.index]}"></label>
+							<div id="mi-div-home" style="padding:8px;">
+								<div th:each="model, iterStat : ${resultDatatest.modelsList}" style="text-align:start; padding:2px 0;">
+									<label style="display:flex; align-items:center; gap:8px; cursor:pointer;
+										padding:6px 8px; border-radius:6px; transition:background 0.2s;
+										color:var(--text-secondary);"
+										onmouseover="this.style.background='rgba(0,212,255,0.06)'"
+										onmouseout="this.style.background='transparent'">
+										<input type="checkbox"
+											th:id="${'dataset_' + iterStat.index}"
+											th:value="${model}"
+											name="selectedModel"
+											class="single-checkbox" />
+										<span th:text="${resultDatatest.modelsNames[iterStat.index]}"
+											style="font-size:13px; font-weight:500;"></span>
+									</label>
 								</div>
 							</div>
 						</form>
 					</div>
-					<div class="col-12 col-md-6 mb-2" id="mi-div-home-left">
-						<label th:text="#{view.home.table.saved}"></label>
+
+					<!-- Saved datasets -->
+					<div class="col-12 col-md-6 mb-3" id="mi-div-home-left">
+						<div style="margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+							<span class="material-symbols-outlined" style="color:#a78bfa; font-size:20px;">save</span>
+							<label th:text="#{view.home.table.saved}"
+								style="font-weight:600; font-size:14px; color:var(--text-primary); margin:0;"></label>
+						</div>
 						<form id="formSavedDataset" name="formSavedDataset" method="get"
 							action="/webAppMotorElectrico/newload">
-							<div id="mi-div-home" class="mb-2">
-								<div th:each="modelS, iterStat : ${resultSavedDatatest.modelsList}"
-									style="text-align: start;">
-									<div class="row justify-content-between align-items-center mb-2">
-										<div class="col-6 d-flex align-items-center">
-											<input type="checkbox" th:id="${'savedDataset_' + iterStat.index}"
-												th:value="${modelS}" name="selectedSavedModel"
-												class="single-checkbox" style="margin-right: 3px;"/>
+							<div id="mi-div-home" style="padding:8px;">
+								<div th:each="modelS, iterStat : ${resultSavedDatatest.modelsList}" style="text-align:start;">
+									<div class="row justify-content-between align-items-center mb-1"
+										style="margin:0; padding:4px 8px; border-radius:6px; transition:background 0.2s;"
+										onmouseover="this.style.background='rgba(124,58,237,0.06)'"
+										onmouseout="this.style.background='transparent'">
+										<div class="col-8 d-flex align-items-center" style="padding:0;">
+											<input type="checkbox"
+												th:id="${'savedDataset_' + iterStat.index}"
+												th:value="${modelS}"
+												name="selectedSavedModel"
+												class="single-checkbox"
+												style="margin-right:8px;" />
 											<label th:text="${resultSavedDatatest.modelsNames[iterStat.index]}"
-												th:for="${'savedDataset_' + iterStat.index}"></label>
+												th:for="${'savedDataset_' + iterStat.index}"
+												style="font-size:13px; font-weight:500; cursor:pointer; margin:0; color:var(--text-secondary);">
+											</label>
 										</div>
-										<div class="col-6 d-flex justify-content-end align-items-center">
-											<button type="button" th:onclick="confirmDelete(/*[[${modelS}]]*/)"
+										<div class="col-4 d-flex justify-content-end align-items-center" style="padding:0;">
+											<button type="button"
+												th:onclick="confirmDelete(/*[[${modelS}]]*/)"
 												data-toggle="tooltip" data-placement="bottom"
-												th:title="#{view.load.erase.data}">
-												<span class="material-symbols-outlined"
-													style="vertical-align: middle;">close</span>
+												th:title="#{view.load.erase.data}"
+												style="width:32px; height:32px; padding:0; background:transparent;
+													border:1px solid rgba(239,68,68,0.2); color:rgba(239,68,68,0.6);
+													border-radius:6px; display:flex; align-items:center; justify-content:center;"
+												onmouseover="this.style.background='rgba(239,68,68,0.1)'; this.style.color='#ef4444'; this.style.borderColor='rgba(239,68,68,0.5)';"
+												onmouseout="this.style.background='transparent'; this.style.color='rgba(239,68,68,0.6)'; this.style.borderColor='rgba(239,68,68,0.2)';">
+												<span class="material-symbols-outlined" style="font-size:16px; vertical-align:middle;">close</span>
 											</button>
 										</div>
 									</div>
@@ -61,59 +110,73 @@
 							</div>
 						</form>
 					</div>
-					<div class="row d-flex justify-content-center" id="submitButtonContainer">
-						<div class="col-12 col-md-12 mb-4">
-							<button id="submitButton" type="button">OK</button>
-							<button type="button" id="newDatasetBtt"
-								onclick="window.location.href = '/webAppMotorElectrico/newload?selectedSavedModel=New%20Dataset';"
-								th:text="#{view.home.new.dataset.btt}"></button>
-						</div>
+				</div>
+
+				<!-- Action Buttons -->
+				<div class="row d-flex justify-content-center mt-3" id="submitButtonContainer">
+					<div class="col-12 col-md-8 d-flex justify-content-center" style="gap:12px; flex-wrap:wrap;">
+						<button id="submitButton" type="button" style="min-width:120px;">
+							<span class="material-symbols-outlined" style="vertical-align:middle; margin-right:4px; font-size:16px;">play_arrow</span>
+							OK
+						</button>
+						<button type="button" id="newDatasetBtt"
+							style="min-width:140px; background:linear-gradient(135deg,#7c3aed,#5b21b6); color:#fff;"
+							onclick="window.location.href='/webAppMotorElectrico/newload?selectedSavedModel=New%20Dataset';"
+							th:text="#{view.home.new.dataset.btt}">
+						</button>
 					</div>
 				</div>
+
 			</div>
 		</div>
+
+		<!-- Delete confirmation modal -->
 		<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
 			aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
-					<div class="modal-body">
-						<span th:text="#{view.modal.body.deleteDataset}"></span>
-						<span id="userNameToDelete"></span>
+					<div class="modal-body" style="padding:24px;">
+						<span class="material-symbols-outlined" style="font-size:40px; color:#ef4444; display:block; margin-bottom:12px;">delete_forever</span>
+						<span th:text="#{view.modal.body.deleteDataset}" style="font-size:14px;"></span>
+						<strong id="userNameToDelete" style="color:var(--accent-cyan);"></strong>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							onclick="$('#confirmDeleteModal').modal('hide');"
-							th:text="#{view.modal.delete.candel.btt}"></button>
+							th:text="#{view.modal.delete.candel.btt}"
+							style="background:rgba(255,255,255,0.07); border:1px solid var(--border-color); color:var(--text-primary);">
+						</button>
 						<button type="button" class="btn btn-danger" id="confirmDeleteButton"
-							th:text="#{view.modal.delete.btt}"></button>
+							th:text="#{view.modal.delete.btt}"
+							style="background:linear-gradient(135deg,#ef4444,#b91c1c); border:none; color:#fff;">
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
-	<th:block th:insert="~{/fragments/footer}"></th:block>
-</body>
-<script>
-	$(document).ready(function () {
-		if (!$("#warningsDivAPI").is(":visible")) {
-			$("#manageLink").css({"display": "inline"});
-			if ($("#loggedUserFlag").val() == 'admin') {
-				$("#adminUsersBtt").css({"display": "inline"});
+
+	<th:block th:insert="~{fragments/footer}"></th:block>
+
+	<script>
+		$(document).ready(function () {
+			if (!$("#warningsDivAPI").is(":visible")) {
+				$("#manageLink").css({"display": "inline"});
+				if ($("#loggedUserFlag").val() == 'admin') {
+					$("#adminUsersBtt").css({"display": "inline"});
+				}
+				$("#logout").css({"display": "inline"});
 			}
-			$("#logout").css({"display": "inline"});
+		});
+
+		function confirmDelete(usuario) {
+			document.getElementById("confirmDeleteButton").setAttribute("onclick", "eliminarItem('" + usuario + "')");
+			var partes = usuario.split(".");
+			var nombreSinExtension = partes[0];
+			document.getElementById("userNameToDelete").innerText = nombreSinExtension;
+			$('#confirmDeleteModal').modal('show');
 		}
-	});
-
-	function confirmDelete(usuario) {
-		document.getElementById("confirmDeleteButton").setAttribute("onclick", "eliminarItem('" + usuario + "')");
-
-		var partes = usuario.split(".");
-		var nombreSinExtension = partes[0];
-
-		document.getElementById("userNameToDelete").innerText = nombreSinExtension;
-
-		$('#confirmDeleteModal').modal('show');
-	}
-</script>
+	</script>
+</body>
 
 </html>

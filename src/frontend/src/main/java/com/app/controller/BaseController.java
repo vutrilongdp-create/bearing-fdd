@@ -217,6 +217,10 @@ public class BaseController {
 		BufferedImage img2 = null;
 		BufferedImage img3 = null;
 		BufferedImage img4 = null;
+		BufferedImage img5 = null;
+		BufferedImage img6 = null;
+		BufferedImage img7 = null;
+		BufferedImage img8 = null;
 
 		try {
 			info = electricService.getDatasetInfo(data2Run.getNombre_req());
@@ -231,6 +235,10 @@ public class BaseController {
 				img2 = electricService.getImage(this.loggedUser, 2);
 				img3 = electricService.getImage(this.loggedUser, 3);
 				img4 = electricService.getImage(this.loggedUser, 4);
+				img5 = electricService.getImage(this.loggedUser, 5);
+				img6 = electricService.getImage(this.loggedUser, 6);
+				img7 = electricService.getImage(this.loggedUser, 7);
+				img8 = electricService.getImage(this.loggedUser, 8);
 
 				if (img1 != null) {
 					String img2Front1Encoded = encodeImageToBase64(img1);
@@ -247,6 +255,18 @@ public class BaseController {
 				if (img4 != null) {
 					String img2Front4Encoded = encodeImageToBase64(img4);
 					model.addAttribute("img2Front4Encoded", img2Front4Encoded);
+				}
+				if (img5 != null) {
+					model.addAttribute("imgXai5Encoded", encodeImageToBase64(img5));
+				}
+				if (img6 != null) {
+					model.addAttribute("imgXai6Encoded", encodeImageToBase64(img6));
+				}
+				if (img7 != null) {
+					model.addAttribute("imgXai7Encoded", encodeImageToBase64(img7));
+				}
+				if (img8 != null) {
+					model.addAttribute("imgXai8Encoded", encodeImageToBase64(img8));
 				}
 
 				if (img1 == null && img2 == null && img3 == null && img4 == null) {
@@ -541,6 +561,10 @@ public class BaseController {
 		BufferedImage img2 = null;
 		BufferedImage img3 = null;
 		BufferedImage img4 = null;
+		BufferedImage img5 = null;
+		BufferedImage img6 = null;
+		BufferedImage img7 = null;
+		BufferedImage img8 = null;
 
 		String owner = "";
 		if (this.ownerUser != "") {
@@ -565,6 +589,10 @@ public class BaseController {
 					img2 = electricService.getImage(owner, 2);
 					img3 = electricService.getImage(owner, 3);
 					img4 = electricService.getImage(owner, 4);
+					img5 = electricService.getImage(owner, 5);
+					img6 = electricService.getImage(owner, 6);
+					img7 = electricService.getImage(owner, 7);
+					img8 = electricService.getImage(owner, 8);
 
 					if (img1 != null) {
 						String img2Front1Encoded = encodeImageToBase64(img1);
@@ -581,6 +609,18 @@ public class BaseController {
 					if (img4 != null) {
 						String img2Front4Encoded = encodeImageToBase64(img4);
 						model.addAttribute("img2Front4Encoded", img2Front4Encoded);
+					}
+					if (img5 != null) {
+						model.addAttribute("imgXai5Encoded", encodeImageToBase64(img5));
+					}
+					if (img6 != null) {
+						model.addAttribute("imgXai6Encoded", encodeImageToBase64(img6));
+					}
+					if (img7 != null) {
+						model.addAttribute("imgXai7Encoded", encodeImageToBase64(img7));
+					}
+					if (img8 != null) {
+						model.addAttribute("imgXai8Encoded", encodeImageToBase64(img8));
 					}
 
 					if (img1 == null && img2 == null && img3 == null && img4 == null) {
@@ -644,6 +684,10 @@ public class BaseController {
 					img2 = electricService.getImage(owner, 2);
 					img3 = electricService.getImage(owner, 3);
 					img4 = electricService.getImage(owner, 4);
+					img5 = electricService.getImage(owner, 5);
+					img6 = electricService.getImage(owner, 6);
+					img7 = electricService.getImage(owner, 7);
+					img8 = electricService.getImage(owner, 8);
 
 					if (img1 != null) {
 						String img2Front1Encoded = encodeImageToBase64(img1);
@@ -660,6 +704,18 @@ public class BaseController {
 					if (img4 != null) {
 						String img2Front4Encoded = encodeImageToBase64(img4);
 						model.addAttribute("img2Front4Encoded", img2Front4Encoded);
+					}
+					if (img5 != null) {
+						model.addAttribute("imgXai5Encoded", encodeImageToBase64(img5));
+					}
+					if (img6 != null) {
+						model.addAttribute("imgXai6Encoded", encodeImageToBase64(img6));
+					}
+					if (img7 != null) {
+						model.addAttribute("imgXai7Encoded", encodeImageToBase64(img7));
+					}
+					if (img8 != null) {
+						model.addAttribute("imgXai8Encoded", encodeImageToBase64(img8));
 					}
 
 					if (img1 == null && img2 == null && img3 == null && img4 == null) {
