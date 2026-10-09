@@ -1,6 +1,6 @@
 # Table 2 - Project Results Summary
 
-Source: project rerun results in `ffp_xai_all.json`, `test_results_windowed_ms2ae/*_range_voting_comparison.json`, and the IMS-2 case-study summary.
+Source: range, stage, band-pass range, diagnosis and status come from [`../logs/ims_range_voting_comparison.json`](../logs/ims_range_voting_comparison.json) and [`../logs/xjtu_range_voting_comparison.json`](../logs/xjtu_range_voting_comparison.json); FFP, threshold and top-3 features for IMS-1, IMS-3 and XJTU-SY come from [`ffp_xai_all.json`](ffp_xai_all.json). See the provenance notes below for IMS-2.
 
 | Dataset | Top 3 correlated features | Project FFP | Threshold | Sample/range | Stage | Bandpass filter range | Project diagnosis | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -25,3 +25,17 @@ Source: project rerun results in `ffp_xai_all.json`, `test_results_windowed_ms2a
 | XJTU3-4 | RMS (0.98); BPFI nf (0.91); BSF f (0.91) | 468 | 0.311832 | #1410 - #1425 | Early | 3200--6400 Hz | 1X BPFO - 1X BPFI - 2X BSF - 5X, 2X FTF | OVER-DETECTED |
 | XJTU3-4 | RMS (0.98); BPFI nf (0.91); BSF f (0.91) | 468 | 0.311832 | #1445 - #1460 | Medium | 4266.67--6400 Hz | 1X BPFO - 1X BSF - 4X, 3X, 2X FTF | MATCH |
 | XJTU3-4 | RMS (0.98); BPFI nf (0.91); BSF f (0.91) | 468 | 0.311832 | #1495 - #1510 | Last | 3200--6400 Hz | 1X BSF - 5X, 2X FTF | PARTIAL |
+
+## Provenance notes
+
+- **IMS-2 is not part of `ffp_xai_all.json`.** Its FFP (`532`, paper `536`) is recorded in
+  [`../logs/ims2_case_study_summary.json`](../logs/ims2_case_study_summary.json), together with
+  the window size (2,048), the representative samples and the selected band-pass ranges.
+- **The IMS-2 threshold `0.498045` and the IMS-2 top-3 features have no machine-readable source
+  record in this repository.** The script that built this table entered them by hand. The IMS-2
+  case-study record gives a different early-stage threshold (`0.0054477`). The two values most
+  likely come from different HI scales: a sigmoid-type HI output (≈ 0.498, see Fig. 8) versus the
+  windowed reconstruction MSE. This has not been confirmed, so treat both IMS-2 values as
+  **unverified** until the run is repeated with a recorded model, HI definition and threshold.
+- FFP indices are reported as produced by each run. The zero- or one-based convention of the
+  original IMS-2 run was not recorded.

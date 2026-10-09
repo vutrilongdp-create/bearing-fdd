@@ -1,0 +1,61 @@
+{
+  "dataset": "IMS2",
+  "samples": 984,
+  "window_size": 2048,
+  "representative_samples": [
+    536,
+    871,
+    979
+  ],
+  "project_ffp": 532,
+  "paper_ffp": 536,
+  "thresholds": {
+    "early": 0.0054477405012457345,
+    "medium": 0.09394049762731504,
+    "last": 0.1878809952546301
+  },
+  "selected_bands": {
+    "536": [
+      2560.0,
+      5120.0
+    ],
+    "871": [
+      5120.0,
+      7680.0
+    ],
+    "979": [
+      5120.0,
+      7680.0
+    ]
+  },
+  "outputs": {
+    "health_index": [
+      "report_results\\ims2_case_study_figures\\01_ims2_health_index.png",
+      "report_results\\ims2_case_study_figures\\01_ims2_health_index.svg"
+    ],
+    "health_stage_division": [
+      "report_results\\ims2_case_study_figures\\02_ims2_health_stage_division.png",
+      "report_results\\ims2_case_study_figures\\02_ims2_health_stage_division.svg"
+    ],
+    "isolated_faulty_samples": [
+      "report_results\\ims2_case_study_figures\\03_ims2_isolated_faulty_samples.png",
+      "report_results\\ims2_case_study_figures\\03_ims2_isolated_faulty_samples.svg"
+    ],
+    "kurtograms": [
+      "report_results\\ims2_case_study_figures\\04_ims2_kurtograms.png",
+      "report_results\\ims2_case_study_figures\\04_ims2_kurtograms.svg"
+    ],
+    "filtered_envelope_fft": [
+      "report_results\\ims2_case_study_figures\\05_ims2_filtered_envelope_fft.png",
+      "report_results\\ims2_case_study_figures\\05_ims2_filtered_envelope_fft.svg"
+    ],
+    "time_correlation": [
+      "report_results\\ims2_case_study_figures\\06_ims2_time_domain_correlation.png",
+      "report_results\\ims2_case_study_figures\\06_ims2_time_domain_correlation.svg"
+    ],
+    "frequency_correlation": [
+      "report_results\\ims2_case_study_figures\\07_ims2_frequency_domain_correlation.png",
+      "report_results\\ims2_case_study_figures\\07_ims2_frequency_domain_correlation.svg"
+    ]
+  }
+}

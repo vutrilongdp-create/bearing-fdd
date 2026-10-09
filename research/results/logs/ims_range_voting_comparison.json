@@ -1,0 +1,3647 @@
+[
+  {
+    "dataset": "IMS1",
+    "range": "#1850-#1880",
+    "stage": "Early",
+    "valid_samples": 31,
+    "vote_threshold": 10,
+    "expected_faults": [
+      "BPFI",
+      "FTF"
+    ],
+    "project_faults": [
+      "FTF"
+    ],
+    "status": "PARTIAL",
+    "expected_diagnosis": "1X BPFI - 1X FTF",
+    "project_diagnosis": "1X, 2X, 5X, 3X, 4X FTF",
+    "fault_vote_counts": {
+      "FTF": 31,
+      "BPFO": 9,
+      "BSF": 8,
+      "BPFI": 7
+    },
+    "sample_results": [
+      {
+        "sample": 1850,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 1851,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1852,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1853,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1854,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1855,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1856,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1857,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1858,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1859,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [
+            3
+          ],
+          "FTF": [
+            1,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 1860,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "BPFI",
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 1861,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1862,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1863,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 1864,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            4,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1865,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 1866,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [
+            3
+          ],
+          "FTF": [
+            1,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1867,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1
+          ]
+        }
+      },
+      {
+        "sample": 1868,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1869,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 1870,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1871,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFO",
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1872,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1873,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1874,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1875,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "sample": 1876,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "sample": 1877,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 1878,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 1879,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 1880,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            5
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS1",
+    "range": "#2135-#2145",
+    "stage": "Medium",
+    "valid_samples": 11,
+    "vote_threshold": 4,
+    "expected_faults": [
+      "BPFI",
+      "FTF"
+    ],
+    "project_faults": [
+      "BPFI",
+      "BPFO",
+      "FTF"
+    ],
+    "status": "OVER-DETECTED",
+    "expected_diagnosis": "1X BPFI - 2X, 4X FTF",
+    "project_diagnosis": "1X BPFI - 2X, 4X FTF",
+    "fault_vote_counts": {
+      "FTF": 7,
+      "BPFO": 4,
+      "BPFI": 8,
+      "BSF": 1
+    },
+    "sample_results": [
+      {
+        "sample": 2135,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 2136,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 2137,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 2138,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 2139,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 2140,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI",
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 2141,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 2142,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 2143,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            2
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2
+          ]
+        }
+      },
+      {
+        "sample": 2144,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 2145,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS1",
+    "range": "#2150-#2156",
+    "stage": "Last",
+    "valid_samples": 6,
+    "vote_threshold": 2,
+    "expected_faults": [
+      "BPFI",
+      "BPFO",
+      "FTF"
+    ],
+    "project_faults": [
+      "BPFI",
+      "FTF"
+    ],
+    "status": "PARTIAL",
+    "expected_diagnosis": "1X BPFO - 1X BPFI - 3X FTF",
+    "project_diagnosis": "1X BPFI - 2X, 4X FTF",
+    "fault_vote_counts": {
+      "BPFI": 5,
+      "FTF": 6
+    },
+    "sample_results": [
+      {
+        "sample": 2150,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 2151,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 2152,
+        "bandpass_range": [
+          6826.666666666667,
+          8533.333333333334
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            4
+          ]
+        }
+      },
+      {
+        "sample": 2153,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 2154,
+        "bandpass_range": [
+          7680.0,
+          8960.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "sample": 2155,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            4,
+            5
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS2",
+    "range": "#530-#550",
+    "stage": "Early",
+    "valid_samples": 21,
+    "vote_threshold": 7,
+    "expected_faults": [
+      "BPFO",
+      "FTF"
+    ],
+    "project_faults": [
+      "BPFO",
+      "FTF"
+    ],
+    "status": "MATCH",
+    "expected_diagnosis": "1X, 2X BPFO - 1X, 5X, 6X FTF",
+    "project_diagnosis": "1X, 2X BPFO - 2X, 1X, 3X, 5X, 4X, 6X FTF",
+    "fault_vote_counts": {
+      "FTF": 21,
+      "BPFO": 19
+    },
+    "sample_results": [
+      {
+        "sample": 530,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 531,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 532,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 533,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            3
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 534,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 535,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 536,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 537,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "sample": 538,
+        "bandpass_range": [
+          3413.3333333333335,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 539,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            4,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 540,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 541,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 542,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 543,
+        "bandpass_range": [
+          5120.0,
+          6826.666666666667
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            3,
+            5,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 544,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 545,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 546,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 547,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 548,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 549,
+        "bandpass_range": [
+          6400.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 550,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS2",
+    "range": "#865-#875",
+    "stage": "Medium",
+    "valid_samples": 11,
+    "vote_threshold": 4,
+    "expected_faults": [
+      "BPFO"
+    ],
+    "project_faults": [
+      "BPFO"
+    ],
+    "status": "MATCH",
+    "expected_diagnosis": "1X, 2X, 3X, 4X, 5X BPFO",
+    "project_diagnosis": "1X, 2X, 3X, 4X, 5X BPFO",
+    "fault_vote_counts": {
+      "BPFO": 11
+    },
+    "sample_results": [
+      {
+        "sample": 865,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 866,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 867,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 868,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 869,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 870,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 871,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 872,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 873,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 874,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 875,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS2",
+    "range": "#970-#980",
+    "stage": "Last",
+    "valid_samples": 11,
+    "vote_threshold": 4,
+    "expected_faults": [
+      "BPFO"
+    ],
+    "project_faults": [
+      "BPFO"
+    ],
+    "status": "MATCH",
+    "expected_diagnosis": "1X, 2X, 3X, 4X BPFO",
+    "project_diagnosis": "1X, 2X, 3X, 4X, 5X BPFO",
+    "fault_vote_counts": {
+      "BPFO": 11,
+      "FTF": 3,
+      "BPFI": 3
+    },
+    "sample_results": [
+      {
+        "sample": 970,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            5
+          ]
+        }
+      },
+      {
+        "sample": 971,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 972,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 973,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 974,
+        "bandpass_range": [
+          6826.666666666667,
+          8533.333333333334
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 975,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 976,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 977,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": [
+            4
+          ]
+        }
+      },
+      {
+        "sample": 978,
+        "bandpass_range": [
+          6826.666666666667,
+          8533.333333333334
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": [
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 979,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 980,
+        "bandpass_range": [
+          6826.666666666667,
+          8533.333333333334
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS3",
+    "range": "#5960-#5990",
+    "stage": "Early",
+    "valid_samples": 31,
+    "vote_threshold": 10,
+    "expected_faults": [
+      "FTF"
+    ],
+    "project_faults": [
+      "BPFO",
+      "FTF"
+    ],
+    "status": "OVER-DETECTED",
+    "expected_diagnosis": "2X, 3X, 4X, 5X FTF",
+    "project_diagnosis": "1X BPFO - 2X, 1X FTF",
+    "fault_vote_counts": {
+      "FTF": 30,
+      "BPFI": 8,
+      "BPFO": 11,
+      "BSF": 2
+    },
+    "sample_results": [
+      {
+        "sample": 5960,
+        "bandpass_range": [
+          5120.0,
+          6400.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            3,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 5961,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5962,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5963,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5964,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 5965,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5966,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5967,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 5968,
+        "bandpass_range": [
+          5120.0,
+          6826.666666666667
+        ],
+        "detected": [
+          "BPFO",
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            3
+          ],
+          "BPFI": [],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            1,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 5969,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5970,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            4,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 5971,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 5972,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5973,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "sample": 5974,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            3
+          ]
+        }
+      },
+      {
+        "sample": 5975,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 5976,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5977,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5978,
+        "bandpass_range": [
+          1706.6666666666667,
+          3413.3333333333335
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5979,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5980,
+        "bandpass_range": [
+          3413.3333333333335,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            2,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5981,
+        "bandpass_range": [
+          3413.3333333333335,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5982,
+        "bandpass_range": [
+          3840.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 5983,
+        "bandpass_range": [
+          6826.666666666667,
+          8533.333333333334
+        ],
+        "detected": [
+          "BPFI",
+          "BSF",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [
+            1
+          ],
+          "BSF": [
+            1
+          ],
+          "FTF": [
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5984,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 5985,
+        "bandpass_range": [
+          2560.0,
+          3840.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5986,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5987,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            4
+          ]
+        }
+      },
+      {
+        "sample": 5988,
+        "bandpass_range": [
+          6826.666666666667,
+          8533.333333333334
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2
+          ]
+        }
+      },
+      {
+        "sample": 5989,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            2,
+            3,
+            5
+          ]
+        }
+      },
+      {
+        "sample": 5990,
+        "bandpass_range": [
+          5120.0,
+          6400.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS3",
+    "range": "#6170-#6190",
+    "stage": "Medium",
+    "valid_samples": 21,
+    "vote_threshold": 7,
+    "expected_faults": [
+      "BPFO"
+    ],
+    "project_faults": [
+      "BPFI",
+      "BPFO"
+    ],
+    "status": "OVER-DETECTED",
+    "expected_diagnosis": "1X, 2X, 3X, 4X BPFO",
+    "project_diagnosis": "1X, 2X, 3X, 4X, 5X BPFO - 4X BPFI",
+    "fault_vote_counts": {
+      "BPFO": 21,
+      "FTF": 1,
+      "BPFI": 7
+    },
+    "sample_results": [
+      {
+        "sample": 6170,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6171,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6172,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6173,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6174,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6175,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6176,
+        "bandpass_range": [
+          1280.0,
+          2560.0
+        ],
+        "detected": [
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 6177,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6178,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6179,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6180,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6181,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6182,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6183,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6184,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6185,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6186,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6187,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6188,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6189,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6190,
+        "bandpass_range": [
+          2560.0,
+          5120.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      }
+    ]
+  },
+  {
+    "dataset": "IMS3",
+    "range": "#6314-#6324",
+    "stage": "Last",
+    "valid_samples": 10,
+    "vote_threshold": 3,
+    "expected_faults": [
+      "BPFO",
+      "FTF"
+    ],
+    "project_faults": [
+      "BPFI",
+      "BPFO",
+      "FTF"
+    ],
+    "status": "OVER-DETECTED",
+    "expected_diagnosis": "1X, 2X, 3X, 4X BPFO - 4X FTF",
+    "project_diagnosis": "1X, 2X, 3X, 4X, 5X, 6X BPFO - 4X BPFI - 1X FTF",
+    "fault_vote_counts": {
+      "BPFI": 4,
+      "BPFO": 9,
+      "FTF": 3
+    },
+    "sample_results": [
+      {
+        "sample": 6314,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6315,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": [
+            1,
+            6
+          ]
+        }
+      },
+      {
+        "sample": 6316,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6317,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6318,
+        "bandpass_range": [
+          6826.666666666667,
+          8533.333333333334
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO",
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "BPFI": [
+            1
+          ],
+          "BSF": [],
+          "FTF": [
+            1
+          ]
+        }
+      },
+      {
+        "sample": 6319,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFI",
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [
+            4
+          ],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6320,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6321,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6322,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "BPFO"
+        ],
+        "harmonics": {
+          "BPFO": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": []
+        }
+      },
+      {
+        "sample": 6323,
+        "bandpass_range": [
+          5120.0,
+          7680.0
+        ],
+        "detected": [
+          "FTF"
+        ],
+        "harmonics": {
+          "BPFO": [],
+          "BPFI": [],
+          "BSF": [],
+          "FTF": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    ]
+  }
+]
