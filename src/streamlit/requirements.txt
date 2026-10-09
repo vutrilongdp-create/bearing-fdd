@@ -1,0 +1,5 @@
+streamlit
+plotly
+requests
+Pillow
+# dashboard.py also needs the backend requirements: pip install -r ../backend/requirements.txt
