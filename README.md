@@ -1,38 +1,18 @@
 <div align="center">
 
-# BEARING-FDD: Reproduction & Extension
+# BEARING-FDD: Reproduction
 
-**Early detection and explainable diagnosis of bearing faults from raw vibration signals: a critical reproduction of the MS2AE-based BEARING-FDD tool on the IMS and XJTU-SY run-to-failure datasets.**
+**Reproduction of the MS2AE-based BEARING-FDD tool for early detection and explainable diagnosis of bearing faults on the IMS and XJTU-SY run-to-failure datasets.**
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
-[![Flask](https://img.shields.io/badge/Flask-REST%20API-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-frontend-6DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.txt)
 
 </div>
 
-> **About this fork.** The original tool is
-> [s2css-uniovi/bearing-fdd](https://github.com/s2css-uniovi/bearing-fdd) by the S2CSS group
-> (University of Oviedo), described in Magadán *et al.*, *Advanced Engineering Informatics* (2024) and
-> *Software Impacts* (2026). This fork, by **Vu Tri Long**, reproduces the method end-to-end on seven
-> run-to-failure datasets and reports where the reproduction agrees and disagrees with the paper.
->
-> **Status:** this repository currently publishes the **reproduction results and analysis**. The source
-> code in `src/` is still the original upstream version. My implementation work is under active
-> development and will be released once it is stable. It covers the windowed MS2AE, the XAI fixes, the
-> experiment scripts, a reproducible Kaggle package and a Streamlit dashboard.
-
-## Scope of the reproduction
-
-| Area | Work |
-|---|---|
-| **Signal processing / XAI review** | Found three issues in the original envelope-spectrum and XAI code: a missing Hilbert envelope, a sampling rate hard-coded to 20 kHz, and fault-frequency amplitudes looked up by FFT bin index instead of by frequency in Hz. They are fixed in my unreleased implementation. **`src/` in this repository still behaves as the original.** |
-| **Health-indicator model** | Windowed MS2AE (2,048-point windows, HI = P95 of the window reconstruction MSE) and a Table-1-inspired dense autoencoder, trained per dataset. |
-| **Experiments** | FFP, XAI, stage and range-voting diagnosis evaluation on **7 datasets** (IMS-1/2/3, XJTU-SY 2-1, 2-3, 3-1, 3-4), plus regularisation (λ) and latent-dimension sensitivity studies on IMS-2. |
-| **Critical analysis** | [`docs/critical_analysis_vi.md`](docs/critical_analysis_vi.md) lists the differences between the paper, the original code and the rerun results. |
-
-*The implementation behind these results is not yet published (see Status above).*
+> Fork of [s2css-uniovi/bearing-fdd](https://github.com/s2css-uniovi/bearing-fdd) (Magadán *et al.*, 2024; 2026).
+> This repository publishes the **reproduction results and analysis** by **Vu Tri Long**. `src/` is the
+> unchanged original code; my implementation is still in development and is not included yet.
 
 ## Pipeline
 
@@ -41,77 +21,50 @@ raw vibration (IMS: 20,480 pts @ 20.48 kHz · XJTU-SY: 32,768 pts @ 25.6 kHz)
  → autoencoder health indicator (HI)
  → threshold = P95 of healthy HI → First Faulty Point (FFP) = first of 5 consecutive exceedances
  → fault isolation against the healthy baseline (DTW alignment)
- → kurtogram → Butterworth band-pass → Hilbert envelope → FFT
- → harmonic matching of BPFO / BPFI / BSF / FTF (1X–6X) → fault type and stage
- → XAI: Pearson correlation of the HI with time- and frequency-domain engineering features
+ → kurtogram → band-pass → Hilbert envelope → FFT
+ → harmonic matching of BPFO / BPFI / BSF / FTF → fault type and stage
+ → XAI: correlation of the HI with engineering features
 ```
 
 ## Results
 
-### First Faulty Point: rerun vs. paper
+| Dataset | Rerun FFP | Paper FFP |
+|---|---:|---:|
+| IMS-1 | 1091 | 1857 |
+| **IMS-2** | **532** | **536** |
+| IMS-3 | 5940 | 5967 |
+| XJTU-SY 2-1 | 383 | 451 |
+| **XJTU-SY 2-3** | **301** | **301** |
+| XJTU-SY 3-1 | 1268 | 2347 |
+| XJTU-SY 3-4 | 468 | 1416 |
 
-| Dataset | Rerun FFP | Paper FFP | Comment |
-|---|---:|---:|---|
-| IMS-1 | 1091 | 1857 | much earlier: true early fault or false alarm, not confirmed |
-| **IMS-2** | **532** | **536** | closest to the paper; used as the walkthrough case |
-| IMS-3 | 5940 | 5967 | close to the paper |
-| XJTU-SY 2-1 | 383 | 451 | 68 samples earlier |
-| **XJTU-SY 2-3** | **301** | **301** | identical |
-| XJTU-SY 3-1 | 1268 | 2347 | 1,079 samples earlier |
-| XJTU-SY 3-4 | 468 | 1416 | 948 samples earlier |
-
-Fault diagnosis per degradation stage (early / medium / last) is in
-[`research/results/tables/table2_results_summary.md`](research/results/tables/table2_results_summary.md).
-On IMS-2, the outer-race fault (BPFO, 1X–5X harmonics) is recovered at all three stages.
-Every number in the tables is traced to a JSON record in `research/results/logs`, except two IMS-2 values whose source run was not recorded: the threshold and the top-3 features. These two are marked
-**unverified**; see the [provenance notes](research/results/tables/table2_results_summary.md#provenance-notes).
+Diagnosis per degradation stage is in [Table 2](research/results/tables/table2_results_summary.md).
+On IMS-2, the outer-race fault (BPFO harmonics) is recovered at all three stages. Two IMS-2 values
+(the threshold and the top-3 features) are unverified; see the
+[provenance notes](research/results/tables/table2_results_summary.md#provenance-notes).
 
 <p align="center">
   <img src="research/results/figures/fig08_hi_ffp.png" width="38%" alt="Health index of the IMS-2 dataset">
   <img src="research/results/figures/fig13_envelope_fft.png" width="60%" alt="Envelope spectra of isolated faulty IMS-2 samples showing BPFO harmonics">
 </p>
 
-### Key findings from the reproduction
-
-- **The FFP is sensitive to implementation details the paper does not specify.** These include the HI definition, window size, regulariser weights and the threshold tail. In the λ-sensitivity study on IMS-2, 9 of the 10 regularised full-sample models never raised an FFP. The remaining model raised it at #971, while the paper reports #536.
-- **The autoencoder HI behaves almost like signal energy.** Across latent sizes k = 1, 8, 16, 32 and 64, the FFP stays at #533. An audit shows that the HI tracks RMS² closely, so a close FFP alone is **not** evidence that the network learned degradation features.
-- **The live diagnosis and the batch evaluation use different rules.** The web endpoint and the range-voting evaluation apply different peak and harmonic rules, so their results are reported separately.
-
-These are reproduction results on public datasets. They are **not** a claim that the original MS2AE
-was reproduced exactly, and the system is not validated for industrial use.
+The differences between the paper, the original code and the rerun are discussed in
+[`docs/critical_analysis_vi.md`](docs/critical_analysis_vi.md) (Vietnamese). These are reproduction
+results, not a claim of exact reproduction or industrial validation.
 
 ## Repository structure
 
 ```text
 .
-├── src/                    # original BEARING-FDD code (Flask API, Spring frontend, database), unchanged
-├── research/results/
-│   ├── tables/             # Table 2 style summary + FFP / XAI results for all 7 datasets
-│   ├── figures/            # IMS-2 case study, Fig. 8–15 (PNG + SVG)
-│   └── logs/               # windowed MS2AE training logs, range-voting diagnosis comparisons
-├── docs/                   # critical analysis (Vietnamese) and pipeline diagrams
-└── images/                 # original architecture figure
+├── src/                 # original BEARING-FDD code (unchanged)
+├── research/results/    # tables/, figures/ (IMS-2, Fig. 8–15), logs/ (JSON records)
+├── docs/                # critical analysis and pipeline diagrams
+└── images/              # original architecture figure
 ```
 
-To run the original web tool, see the original README below.
-
-## Known issues of the upstream code
-
-The code in `src/` is the original BEARING-FDD release. It does not run from a clean clone without
-extra setup:
-
-- `src/backend/app.py` imports `flask_sqlalchemy` and connects through `mysql+mysqlconnector`, but
-  `requirements.txt` does not list `flask-sqlalchemy` or `mysql-connector-python`.
-- `enter_utils.py` computes the kurtogram through the MATLAB Engine (`matlab.engine.start_matlab()`).
-  A licensed MATLAB installation with the MATLAB Engine for Python is needed; the `matlab==0.1` pin
-  in `requirements.txt` does not provide it.
-- `app.py` and the Spring `application.properties` contain the placeholder MySQL account
-  `root` / `password`. These are sample values for a local database, not real credentials. Override
-  them for any deployment.
-- `requirements.txt` pins TensorFlow / Keras 2.12, which needs Python ≤ 3.11.
-
-My implementation will address these points: an optional MATLAB dependency, an in-memory H2 demo
-database, and complete dependencies. It will be released later (see Status above).
+To run the original tool, see the original README below. Note that it needs MySQL, a MATLAB Engine
+installation for the kurtogram, and `flask-sqlalchemy` / `mysql-connector-python`, which its
+`requirements.txt` does not list.
 
 ## Citation
 
