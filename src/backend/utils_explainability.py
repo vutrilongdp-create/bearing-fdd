@@ -100,13 +100,14 @@ def divideArray(data, number_subsamples, overlap, overlap_percentage):
 
 
 def filteredFFT(order, fs, low_freq, high_freq, signal):
+    from scipy.signal import hilbert
     nyquist = 0.5 * fs
-    low = low_freq / nyquist
-    high = high_freq / nyquist
+    low = max(low_freq / nyquist, 0.001)
+    high = min(high_freq / nyquist, 0.99)
     b, a = butter(order, [low, high], btype='band')
     filtered_signal = filtfilt(b, a, signal)
-    envelope = np.abs(filtered_signal)
-    fft_env, freq = np.abs(enter_utils.get_power_spectrum(np.hanning(len(envelope))*envelope, 20000, 0))
+    envelope = np.abs(hilbert(filtered_signal))
+    fft_env, freq = np.abs(enter_utils.get_power_spectrum(np.hanning(len(envelope))*envelope, fs, 0))
     return fft_env, freq
 
 
@@ -117,17 +118,26 @@ def FFT(signal, fs):
 
 def extractFrequencies(data, fs, fundamental, bpfo, bpfi, ftf, bsf):
     fft_filt, freq = filteredFFT(4, fs, 3500, 5000, data)
-    amp_fund_filt = np.max(fft_filt[fundamental-10:fundamental+10])
-    amp_bpfo_filt = np.max(fft_filt[bpfo-10:bpfo+10])
-    amp_bpfi_filt = np.max(fft_filt[bpfi-10:bpfi+10])
-    amp_ftf_filt = np.max(fft_filt[ftf-10:ftf+10])
-    amp_bsf_filt = np.max(fft_filt[bsf-10:bsf+10])
-    fft, freq = FFT(data, fs)
-    amp_fund = np.max(fft[fundamental-10:fundamental+10])
-    amp_bpfo = np.max(fft[bpfo-10:bpfo+10])
-    amp_bpfi = np.max(fft[bpfi-10:bpfi+10])
-    amp_ftf = np.max(fft[ftf-10:ftf+10])
-    amp_bsf = np.max(fft[bsf-10:bsf+10])
+    fft, freq_unfiltered = FFT(data, fs)
+
+    def max_near(fft_values, freqs, target_hz, width_hz=10.0):
+        freqs = np.asarray(freqs)
+        fft_values = np.asarray(fft_values)
+        mask = (freqs >= target_hz - width_hz) & (freqs <= target_hz + width_hz)
+        if not np.any(mask):
+            return 0.0
+        return float(np.max(fft_values[mask]))
+
+    amp_fund_filt = max_near(fft_filt, freq, fundamental)
+    amp_bpfo_filt = max_near(fft_filt, freq, bpfo)
+    amp_bpfi_filt = max_near(fft_filt, freq, bpfi)
+    amp_ftf_filt = max_near(fft_filt, freq, ftf)
+    amp_bsf_filt = max_near(fft_filt, freq, bsf)
+    amp_fund = max_near(fft, freq_unfiltered, fundamental)
+    amp_bpfo = max_near(fft, freq_unfiltered, bpfo)
+    amp_bpfi = max_near(fft, freq_unfiltered, bpfi)
+    amp_ftf = max_near(fft, freq_unfiltered, ftf)
+    amp_bsf = max_near(fft, freq_unfiltered, bsf)
     return amp_fund_filt, amp_bpfo_filt, amp_bpfi_filt, amp_ftf_filt, amp_bsf_filt, amp_fund, amp_bpfo, amp_bpfi, amp_bsf, amp_ftf
 
 
@@ -182,7 +192,7 @@ def getTimeCorrelationTimeDomain(data, hi_curve, num_subsamples, overlap, percen
     return res
 
 
-def getCorrelationFreqDomain(data, hi_curve):
+def getCorrelationFreqDomain(data, hi_curve, sampling_frequency=20000, BPFO=236, BPFI=297, BSF=278, FTF=15, shaft_frequency=33):
     Fundamental_Filt_tmp = []
     BPFO_Filt_tmp = []
     BPFI_Filt_tmp = []
@@ -194,7 +204,7 @@ def getCorrelationFreqDomain(data, hi_curve):
     FTF_tmp = []
     BSF_tmp = []
     for elem in data:
-        f_filt, bpfo_filt, bpfi_filt, ftf_filt, bsf_filt, f, bpfo, bpfi, ftf, bsf = extractFrequencies(elem, 20000, 33, 236, 297, 15, 278)
+        f_filt, bpfo_filt, bpfi_filt, ftf_filt, bsf_filt, f, bpfo, bpfi, ftf, bsf = extractFrequencies(elem, sampling_frequency, shaft_frequency, BPFO, BPFI, FTF, BSF)
         Fundamental_Filt_tmp.append(f_filt)
         BPFO_Filt_tmp.append(bpfo_filt)
         BPFI_Filt_tmp.append(bpfi_filt)
@@ -211,7 +221,7 @@ def getCorrelationFreqDomain(data, hi_curve):
     return correlation_matrix
 
 
-def getCorrelationTime(data, hi_curve, num_subsamples, overlap, percentage):
+def getCorrelationTime(data, hi_curve, num_subsamples, overlap, percentage, sampling_frequency=20000, BPFO=236, BPFI=297, BSF=278, FTF=15, shaft_frequency=33):
     subsamples = divideArray(data, num_subsamples, overlap, percentage)
     subhicurve = divideArray(hi_curve, num_subsamples, overlap, percentage)
     res = []
@@ -228,7 +238,7 @@ def getCorrelationTime(data, hi_curve, num_subsamples, overlap, percentage):
         FTF_tmp = []
         BSF_tmp = []
         for elem in subs:
-            f_filt, bpfo_filt, bpfi_filt, ftf_filt, bsf_filt, f, bpfo, bpfi, ftf, bsf = extractFrequencies(elem, 20000, 33, 236, 297, 15, 278)
+            f_filt, bpfo_filt, bpfi_filt, ftf_filt, bsf_filt, f, bpfo, bpfi, ftf, bsf = extractFrequencies(elem, sampling_frequency, shaft_frequency, BPFO, BPFI, FTF, BSF)
             Fundamental_Filt_tmp.append(f_filt)
             BPFO_Filt_tmp.append(bpfo_filt)
             BPFI_Filt_tmp.append(bpfi_filt)
@@ -239,7 +249,7 @@ def getCorrelationTime(data, hi_curve, num_subsamples, overlap, percentage):
             BPFI_tmp.append(bpfi)
             FTF_tmp.append(ftf)
             BSF_tmp.append(bsf)
-        data_tmp = np.column_stack((HI_tmp, Fundamental_Filt_tmp, BPFI_Filt_tmp, BPFI_Filt_tmp, FTF_Filt_tmp, BSF_Filt_tmp, Fundamental_tmp, BPFO_tmp, BPFI_tmp, FTF_tmp, BSF_tmp))
+        data_tmp = np.column_stack((HI_tmp, Fundamental_Filt_tmp, BPFO_Filt_tmp, BPFI_Filt_tmp, FTF_Filt_tmp, BSF_Filt_tmp, Fundamental_tmp, BPFO_tmp, BPFI_tmp, FTF_tmp, BSF_tmp))
         df_tmp = pd.DataFrame(data_tmp)
         correlation_tmp = df_tmp.corr()
         res.append(correlation_tmp[0])

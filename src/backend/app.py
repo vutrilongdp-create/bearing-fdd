@@ -5,6 +5,7 @@ import shutil
 import warnings
 import keras
 import csv
+import numpy as np
 
 import pandas as pd
 from flask import Flask, jsonify, request, send_file
@@ -15,6 +16,95 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:password@localhost:3306/PreLoadedDatasets'
 app.config['SQLALCHEMY_BINDS'] = {'users': 'mysql+mysqlconnector://root:password@localhost:3306/RegisteredUsers'}
 db = SQLAlchemy(app)
+
+
+def local_csv_rows(file_name):
+    """Count rows by scanning in binary 1MB chunks — safe for multi-GB files."""
+    path = os.path.join(os.path.dirname(__file__), 'prog_analizador/data', file_name)
+    try:
+        count = 0
+        with open(path, 'rb') as handle:
+            buf = handle.read(1 << 20)          # 1 MB chunk
+            while buf:
+                count += buf.count(b'\n')
+                buf = handle.read(1 << 20)
+        return max(count, 0)
+    except OSError:
+        return 0
+
+
+def json_safe(value):
+    if isinstance(value, dict):
+        return {key: json_safe(val) for key, val in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [json_safe(item) for item in value]
+    if isinstance(value, np.generic):
+        return value.item()
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    return value
+
+
+LOCAL_USERS = [{
+    'usuario': 'admin',
+    'nombre': 'Admin',
+    'apellido': 'Local',
+    'email': 'admin@local',
+    'role': 'ADMIN',
+    'maxdataset': 50
+}]
+
+PRELOADED_DATASETS = {
+    'IMS1': {
+        'id': 1, 'nombre': 'IMS1', 'shaft_frequency': 33.33,
+        'sampling_frequency': 20480, 'carga': 26.7, 'bearing_type': 'IMS',
+        'bpfo': 236.0, 'bpfi': 297.0, 'bsf': 278.0, 'ftf': 15.0,
+        'min_to_check': 0, 'max_to_check': local_csv_rows('IMS1.csv'),
+        'files_added': 1
+    },
+    'IMS2': {
+        'id': 2, 'nombre': 'IMS2', 'shaft_frequency': 33.33,
+        'sampling_frequency': 20480, 'carga': 26.7, 'bearing_type': 'IMS',
+        'bpfo': 236.0, 'bpfi': 297.0, 'bsf': 278.0, 'ftf': 15.0,
+        'min_to_check': 0, 'max_to_check': local_csv_rows('IMS2.csv'),
+        'files_added': 1
+    },
+    'IMS3': {
+        'id': 3, 'nombre': 'IMS3', 'shaft_frequency': 33.33,
+        'sampling_frequency': 20480, 'carga': 26.7, 'bearing_type': 'IMS',
+        'bpfo': 236.0, 'bpfi': 297.0, 'bsf': 278.0, 'ftf': 15.0,
+        'min_to_check': 0, 'max_to_check': local_csv_rows('IMS3.csv'),
+        'files_added': 1
+    },
+    'XJTU2-1': {
+        'id': 4, 'nombre': 'XJTU2-1', 'shaft_frequency': 37.5,
+        'sampling_frequency': 25600, 'carga': 11.0, 'bearing_type': 'XJTU-SY',
+        'bpfo': 112.19, 'bpfi': 178.94, 'bsf': 75.21, 'ftf': 14.20,
+        'min_to_check': 0, 'max_to_check': local_csv_rows('XJTU_SY_2_1.csv'),
+        'files_added': 1
+    },
+    'XJTU2-3': {
+        'id': 5, 'nombre': 'XJTU2-3', 'shaft_frequency': 37.5,
+        'sampling_frequency': 25600, 'carga': 11.0, 'bearing_type': 'XJTU-SY',
+        'bpfo': 112.19, 'bpfi': 178.94, 'bsf': 75.21, 'ftf': 14.20,
+        'min_to_check': 0, 'max_to_check': local_csv_rows('XJTU_SY_2_3.csv'),
+        'files_added': 1
+    },
+    'XJTU3-1': {
+        'id': 6, 'nombre': 'XJTU3-1', 'shaft_frequency': 40.0,
+        'sampling_frequency': 25600, 'carga': 10.0, 'bearing_type': 'XJTU-SY',
+        'bpfo': 123.20, 'bpfi': 196.49, 'bsf': 82.58, 'ftf': 15.40,
+        'min_to_check': 0, 'max_to_check': local_csv_rows('XJTU_SY_3_1.csv'),
+        'files_added': 1
+    },
+    'XJTU3-4': {
+        'id': 7, 'nombre': 'XJTU3-4', 'shaft_frequency': 40.0,
+        'sampling_frequency': 25600, 'carga': 10.0, 'bearing_type': 'XJTU-SY',
+        'bpfo': 123.20, 'bpfi': 196.49, 'bsf': 82.58, 'ftf': 15.40,
+        'min_to_check': 0, 'max_to_check': local_csv_rows('XJTU_SY_3_4.csv'),
+        'files_added': 1
+    },
+}
 
 
 class Dataset(db.Model):
@@ -48,6 +138,9 @@ class Usuarios(db.Model):
 
 @app.route('/checkUser/<string:username>', methods=['GET'])
 def checkUser(username):
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return '0', 200
+
     user_preloaded = Usuarios.query.filter_by(usuario=username).first()
 
     if user_preloaded:
@@ -58,6 +151,9 @@ def checkUser(username):
 
 @app.route('/registerUser', methods=['POST'])
 def registerUser():
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return '0', 201
+
     try:
         data = request.json
 
@@ -83,6 +179,11 @@ def registerUser():
 
 @app.route('/getUser/<string:username>', methods=['GET'])
 def getUserByName(username):
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        user = dict(LOCAL_USERS[0])
+        user['usuario'] = username
+        return jsonify(user)
+
     try:
         user = Usuarios.query.filter_by(usuario=username).first()
         if user:
@@ -101,6 +202,9 @@ def getUserByName(username):
 
 @app.route('/getAllUsers', methods=['GET'])
 def getAllUsers():
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return jsonify(LOCAL_USERS)
+
     try:
         users = Usuarios.query.all()
         if users:
@@ -124,6 +228,9 @@ def getAllUsers():
 
 @app.route('/updateUser/<string:username>', methods=['PUT'])
 def updateUser(username):
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return jsonify({'message': 'Local demo user update skipped'}), 200
+
     try:
         data = request.json
         user = Usuarios.query.filter_by(usuario=username).first()
@@ -144,6 +251,9 @@ def updateUser(username):
 
 @app.route('/deleteUser/<string:username>', methods=['DELETE'])
 def deleteUser(username):
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return jsonify({'message': f'Local demo user {username} delete skipped'}), 200
+
     try:
         user = Usuarios.query.filter_by(usuario=username).first()
 
@@ -165,6 +275,13 @@ def deleteUser(username):
 
 @app.route('/getDatasetByName/<string:dataset_name>', methods=['GET'])
 def getDatasetByName(dataset_name):
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        clean_name = os.path.splitext(dataset_name)[0]
+        dataset = PRELOADED_DATASETS.get(clean_name)
+        if dataset:
+            return jsonify(dataset)
+        return jsonify({'nombre': 'Dataset not found'}), 404
+
     try:
         dataset = Dataset.query.filter_by(nombre=dataset_name).first()
 
@@ -192,6 +309,9 @@ def getDatasetByName(dataset_name):
 
 @app.route('/createDataset/<string:username>', methods=['POST'])
 def insertDataset(username):
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return '0', 201
+
     try:
         data = request.json
 
@@ -228,6 +348,9 @@ def insertDataset(username):
 
 @app.route('/updateDataset/<int:dataset_id>/<string:user>', methods=['PUT'])
 def updateDataset(dataset_id, user):
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return jsonify({'message': 'Local demo dataset update skipped'}), 200
+
     try:
         data = request.json
 
@@ -261,12 +384,12 @@ def updateDataset(dataset_id, user):
 
 @app.route('/getModelsList', methods=['GET'])
 def getModelsList():
+    if os.environ.get('BEARING_FDD_LOCAL_DEMO', '1') == '1':
+        return jsonify({'modelsList': sorted(PRELOADED_DATASETS.keys())})
 
     ruta_data = os.path.join(os.path.dirname(__file__), 'prog_analizador/models')
-
     nombres_elementos = os.listdir(ruta_data)
     nombres_elementos_ordenados = sorted(nombres_elementos)
-
     return jsonify({'modelsList': nombres_elementos_ordenados})
 
 
@@ -490,43 +613,28 @@ def analyzeData(session_id, flag):
                     'analysis_result': None
                 }
                 os.remove('prog_analizador/tmp/tmp' + str(dataset) + '.csv')
-                return jsonify(result), 200
+                return jsonify(json_safe(result)), 200
             first_sample = 0
             analyzed_samples = enter_utils.getDatasetTmp(dataset, analyzed_number, first_sample, session_id)[0]
 
         model_name = str(dataset) + '.h5'
 
         if flag == 0:
-            if os.path.isfile('prog_analizador/models/' + model_name):
-                custom_objects = {'MonotonicityLayer2': enter_utils.MonotonicityLayer2,
-                                  'SmoothingLayer': enter_utils.SmoothingLayer,
-                                  'from_config': enter_utils.from_config}
-                ms2ae_model = keras.models.load_model('prog_analizador/models/' + str(model_name), custom_objects=custom_objects,
-                                                      compile=False)
-            else:
-                input_data = healthy_samples[0].reshape(-1, 1)
-                ms2ae_model = enter_utils.createModel('prog_analizador/models/' + str(model_name), input_data)
-                epochs = 5
-                batch_size = 64
-                ms2ae_model.fit(healthy_samples, healthy_samples, epochs=epochs, batch_size=batch_size, verbose=0)
+            ms2ae_model, hi_mode = enter_utils.load_analysis_model(
+                'prog_analizador/models', dataset, healthy_samples
+            )
 
         if flag == 1 or flag == 3:
-            if os.path.isfile('prog_analizador/saved_models/' + session_id + '/' + model_name):
-                custom_objects = {'MonotonicityLayer2': enter_utils.MonotonicityLayer2,
-                                  'SmoothingLayer': enter_utils.SmoothingLayer,
-                                  'from_config': enter_utils.from_config}
-                ms2ae_model = keras.models.load_model('prog_analizador/saved_models/' + session_id + '/' + str(model_name), custom_objects=custom_objects,
-                                                      compile=False)
-            else:
-                input_data = healthy_samples[0].reshape(-1, 1)
-                ms2ae_model = enter_utils.createModel('prog_analizador/saved_models/' + session_id + '/' + str(model_name), input_data)
-                epochs = 5
-                batch_size = 64
-                ms2ae_model.fit(healthy_samples, healthy_samples, epochs=epochs, batch_size=batch_size, verbose=0)
-                os.remove('prog_analizador/saved_models/' + session_id + '/' + str(dataset) + '.csv')
+            saved_dir = 'prog_analizador/saved_models/' + session_id
+            ms2ae_model, hi_mode = enter_utils.load_analysis_model(
+                saved_dir, dataset, healthy_samples
+            )
+            tmp_model_csv = 'prog_analizador/saved_models/' + session_id + '/' + str(dataset) + '.csv'
+            if os.path.exists(tmp_model_csv):
+                os.remove(tmp_model_csv)
 
-        HI_healthy_samples = ms2ae_model.predict(healthy_samples, verbose=0)
-        HI_analyzed_samples = ms2ae_model.predict(analyzed_samples, verbose=0)
+        HI_healthy_samples = enter_utils.predict_hi(ms2ae_model, healthy_samples, hi_mode)
+        HI_analyzed_samples = enter_utils.predict_hi(ms2ae_model, analyzed_samples, hi_mode)
         threshold = enter_utils.getThreshold(HI_healthy_samples)
 
         isFaulty, faultySample = enter_utils.checkStage(HI_analyzed_samples, threshold)
@@ -543,26 +651,26 @@ def analyzeData(session_id, flag):
         result = enter_utils.determineFailure(ruta_carpeta, diff_harmonics, HI_healthy_samples, HI_analyzed_samples[faultySample], float(sampling_frequency), fstart, fend, freq_interest, 5)
 
         if isFaulty:
-            if flag == 1:
-                tmp_samples = enter_utils.getDatasetNew(dataset, first_sample + analyzed_number, 0, session_id)[0]
-            if flag == 0:
-                tmp_samples = enter_utils.getDataset(dataset, first_sample + analyzed_number, 0)[0]
-            if flag == 3:
-                tmp_samples = enter_utils.getDatasetTmp(dataset, first_sample + analyzed_number, 0, session_id)[0]
-            enter_utils.matriz_full(tmp_samples, ms2ae_model.predict(tmp_samples, verbose=0), ruta_carpeta, 5, int(sampling_frequency), int(shaft_frequency), int(BPFO), int(BPFI), int(BSF), int(FTF))
-            enter_utils.matriz_full2(tmp_samples, ms2ae_model.predict(tmp_samples, verbose=0), ruta_carpeta, 6)
-            resultTimeReport = enter_utils.matriz_simple(tmp_samples, ms2ae_model.predict(tmp_samples, verbose=0), ruta_carpeta, 7)
-            resultFreqReport = enter_utils.matriz_simple2(tmp_samples, ms2ae_model.predict(tmp_samples, verbose=0), ruta_carpeta, 8, int(sampling_frequency), int(shaft_frequency), int(BPFO), int(BPFI), int(BSF), int(FTF))
+            # Use the analyzed window for XAI to avoid loading thousands of
+            # high-frequency samples into RAM during batch validation.
+            tmp_samples = analyzed_samples
+            tmp_hi = enter_utils.predict_hi(ms2ae_model, tmp_samples, hi_mode)
+            enter_utils.matriz_full(tmp_samples, tmp_hi, ruta_carpeta, 5, int(sampling_frequency), int(shaft_frequency), int(BPFO), int(BPFI), int(BSF), int(FTF))
+            enter_utils.matriz_full2(tmp_samples, tmp_hi, ruta_carpeta, 6)
+            resultTimeReport = enter_utils.matriz_simple(tmp_samples, tmp_hi, ruta_carpeta, 7)
+            resultFreqReport = enter_utils.matriz_simple2(tmp_samples, tmp_hi, ruta_carpeta, 8, int(sampling_frequency), int(shaft_frequency), int(BPFO), int(BPFI), int(BSF), int(FTF))
             result['resultTimeReport'] = resultTimeReport
             result['resultFreqReport'] = resultFreqReport
 
         if flag == 3:
             os.remove('prog_analizador/tmp/tmp' + str(dataset) + '.csv')
 
-        return jsonify(result), 200
+        return jsonify(json_safe(result)), 200
 
     except Exception as e:
-        os.remove('prog_analizador/tmp/tmp' + str(dataset) + '.csv')
+        tmp_path = 'prog_analizador/tmp/tmp' + str(dataset) + '.csv' if 'dataset' in locals() else None
+        if tmp_path and os.path.exists(tmp_path):
+            os.remove(tmp_path)
         return jsonify({'error': str(e)}), 500
 
 
